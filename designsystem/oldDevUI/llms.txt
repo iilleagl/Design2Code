@@ -1,0 +1,94 @@
+============================================================
+llms.txt - DevUI Pencil Design System
+============================================================
+
+# DevUI Design System | DevUI 设计系统
+
+> DevUI 是华为云开源的企业级 UI 组件库，孵化自华为云 DevCloud 研发工具体系。
+> 设计理念：沉浸 (Immersive) · 灵活 (Flexible) · 至简 (Simplistic)
+> 参考文档: https://devui.design/design-cn/start
+
+## SOURCE FILE | 源文件
+
+- FORMAT: Pencil .pen (Design-as-Code)
+- PATH: designsystem/devUI/components/devUI.pen
+- SYNC_TARGET: Angular / Vue / React (DevUI Component Library)
+- LAYOUT_ENGINE: Pencil Auto Layout (Flex-compatible)
+- THEME_SUPPORT: Light Mode (浅色模式) / Dark Mode (深色模式)
+
+---
+
+## COMPONENT DIRECTORY | 组件目录
+
+### Foundation / 基础规范 (6)
+
+| # | Name | Node ID | Description |
+|---|------|---------|-------------|
+| 01 | Typography 文字-浅色模式 | ebP1c | 字体族、字号、字重、行高、版权规范 |
+| 02 | Color 颜色-浅色模式 | xz3hM | 浅色主题色彩系统：主色、辅助色、背景/边框色、文字色 |
+| 02-2 | Color 颜色-深色模式 | wk5vG | 深色主题色彩系统及标签色 |
+| 03 | 色板 | zBmXV | 扩展色板：Indigo Blue 靛蓝梯度 + Gray 灰色梯度 |
+| 04 | 间距规则 | M2Zjs | 4px 网格系统，亲密性原则，推荐间距值 |
+| 05 | 描边&阴影 | n6viT | 阴影层级体系：卡片、下拉、弹窗、抽屉等 |
+
+### Components / 组件 (17)
+
+| # | Name | Node ID | Description |
+|---|------|---------|-------------|
+| 06 | 导航 | tpkWC | 顶部导航、手风琴侧栏、定位导航、时间线、步骤日志、标签页、面包屑、分页、左侧边栏、树 |
+| 07 | 按钮与链接 | Ml7Ng | 强调/次要按钮(L/M/S)、文本按钮、图标按钮、下拉按钮、链接 |
+| 08 | 滑块 | 1PCFI | 基本滑块、双向绑定、放大缩小 |
+| 09 | 卡片 | UElRD | 大/小标题卡片、操作模板卡片、工作项卡片、按钮样式卡片 |
+| 10 | 提示类 | D8idg | 基础提示、错误/全局/Banner通知、文字提示、导航栏通知、消息提醒、Badge |
+| 11 | 抽屉 | 1XFc1 | 侧边抽屉面板 |
+| 12 | 输入类 | sKDbg | 单行/多行文本框、自动补齐、带标签输入、数字输入、微调器、搜索框(4种样式)、综合搜索 |
+| 13 | 选择类 | kRwQQ | 下拉框、下拉复选框、无框下拉、单选/多选控制器、单选块、多块选择、树选择、双向选择 |
+| 14 | 表单 | 63JX0 | 表单组合(输入/选择/标签/错误/多行)、字段编辑(单项/行内/弹窗/多项)、及时生效 |
+| 15 | 日期 | G5qzq | 年月选择、日期选择、区间日期选择 |
+| 16 | 弹窗 | CjvtK | 弹窗尺寸(960/800/600/400)、标题带图标、不带操作 |
+| 17 | 折叠面板 | lgUcd | 有图标(展开图标右)/无图标(展开图标左) × 信息/通知/成功/错误/告警 |
+| 18 | 上传 | xYV2b | 上传按钮、图片上传、拖拽上传 |
+| 19 | 色卡/标签 | t2Jqi | 色卡展示、标签组件 |
+| 20 | 图表 | d1f7k | 数据可视化图表 |
+| 21 | 表格 | aoq8B | 数据表格 |
+| 22 | 新手指引 | hmY2f | 流程指引、新手引导 |
+
+---
+
+## DESIGN TOKENS SUMMARY | 设计令牌概要
+
+### Colors 色彩
+- Primary 主色: #5E7CE0 (Default) / #7693F5 (Hover) / #526ECC (Active)
+- Success 成功: #3DCCA6
+- Warning 警告: #FA9841
+- Danger 错误: #F66F6A
+- Info 提示: #5E7CE0
+
+### Typography 字体
+- Chinese: PingFang SC (macOS) / Microsoft YaHei (Windows)
+- English: Huawei Sans / Arial (fallback)
+- Sizes: 12 / 14 / 16 / 20 / 24 / 36 px
+
+### Spacing 间距
+- Grid: 4px base → 4, 8, 12, 16, 20, 24, 32
+
+### Corner Radius 圆角
+- Default: 4px
+
+---
+
+## USAGE NOTES | 使用说明
+
+1. 所有组件均包含完整的交互状态：Default / Hover / Active(Focus) / Disabled
+2. 按钮组件支持三种尺寸：L (32px) / M (28px) / S (24px)
+3. 色彩系统同时提供浅色和深色两套主题
+4. 间距遵循 4px 网格系统，以亲密性原则组织信息层级
+5. 阴影根据组件层级提供不同深度，从卡片(轻)到抽屉(重)
+
+---
+
+## SEE ALSO
+
+- llms-full.txt: 详细组件规范、节点层级、属性映射及转换规则
+- DevUI Design: https://devui.design/design-cn/start
+- DevUI GitHub: https://github.com/DevCloudFE/ng-devui

@@ -1,0 +1,1909 @@
+[
+    {
+        "children": [
+            {
+                "children": [
+                    {
+                        "alignItems": "center",
+                        "children": [
+                            {
+                                "alignItems": "center",
+                                "children": [
+                                    {
+                                        "fill": "#FFFFFF",
+                                        "height": 20,
+                                        "iconFontFamily": "lucide",
+                                        "iconFontName": "network",
+                                        "id": "vV0w3",
+                                        "name": "logoIconInner",
+                                        "type": "icon_font",
+                                        "width": 20
+                                    }
+                                ],
+                                "cornerRadius": 8,
+                                "fill": "#3B82F6",
+                                "height": 36,
+                                "id": "hNIdq",
+                                "justifyContent": "center",
+                                "name": "logoIcon",
+                                "type": "frame",
+                                "width": 36
+                            },
+                            {
+                                "content": "NetOps",
+                                "fill": "#1E293B",
+                                "fontFamily": "Inter",
+                                "fontSize": 20,
+                                "fontWeight": "700",
+                                "id": "zFrRU",
+                                "name": "logoText",
+                                "type": "text"
+                            }
+                        ],
+                        "gap": 12,
+                        "id": "Ip1Zh",
+                        "name": "Logo区",
+                        "padding": [
+                            0,
+                            4
+                        ],
+                        "type": "frame",
+                        "width": "fill_container"
+                    },
+                    {
+                        "children": [
+                            {
+                                "content": "主导航",
+                                "fill": "#94A3B8",
+                                "fontFamily": "Inter",
+                                "fontSize": 11,
+                                "fontWeight": "600",
+                                "id": "N8Oop",
+                                "name": "navLabel",
+                                "type": "text"
+                            },
+                            {
+                                "alignItems": "center",
+                                "children": [
+                                    {
+                                        "fill": "#3B82F6",
+                                        "height": 20,
+                                        "iconFontFamily": "lucide",
+                                        "iconFontName": "layout-dashboard",
+                                        "id": "2bDMr",
+                                        "name": "navIcon1",
+                                        "type": "icon_font",
+                                        "width": 20
+                                    },
+                                    {
+                                        "content": "控制台",
+                                        "fill": "#3B82F6",
+                                        "fontFamily": "Inter",
+                                        "fontSize": 14,
+                                        "fontWeight": "500",
+                                        "id": "WW3Ag",
+                                        "name": "navText1",
+                                        "type": "text"
+                                    }
+                                ],
+                                "cornerRadius": 8,
+                                "fill": "#EFF6FF",
+                                "gap": 12,
+                                "height": 40,
+                                "id": "jdk3y",
+                                "name": "控制台",
+                                "padding": [
+                                    0,
+                                    12
+                                ],
+                                "type": "frame",
+                                "width": "fill_container"
+                            },
+                            {
+                                "alignItems": "center",
+                                "children": [
+                                    {
+                                        "fill": "#64748B",
+                                        "height": 20,
+                                        "iconFontFamily": "lucide",
+                                        "iconFontName": "server",
+                                        "id": "zZMd0",
+                                        "name": "navIcon2",
+                                        "type": "icon_font",
+                                        "width": 20
+                                    },
+                                    {
+                                        "content": "网络设备",
+                                        "fill": "#475569",
+                                        "fontFamily": "Inter",
+                                        "fontSize": 14,
+                                        "fontWeight": "500",
+                                        "id": "Y4vJF",
+                                        "name": "navText2",
+                                        "type": "text"
+                                    }
+                                ],
+                                "cornerRadius": 8,
+                                "gap": 12,
+                                "height": 40,
+                                "id": "suRiL",
+                                "name": "网络设备",
+                                "padding": [
+                                    0,
+                                    12
+                                ],
+                                "type": "frame",
+                                "width": "fill_container"
+                            },
+                            {
+                                "alignItems": "center",
+                                "children": [
+                                    {
+                                        "fill": "#64748B",
+                                        "height": 20,
+                                        "iconFontFamily": "lucide",
+                                        "iconFontName": "monitor",
+                                        "id": "T8NLy",
+                                        "name": "navIcon3",
+                                        "type": "icon_font",
+                                        "width": 20
+                                    },
+                                    {
+                                        "content": "监控设备",
+                                        "fill": "#475569",
+                                        "fontFamily": "Inter",
+                                        "fontSize": 14,
+                                        "fontWeight": "500",
+                                        "id": "krJKa",
+                                        "name": "navText3",
+                                        "type": "text"
+                                    }
+                                ],
+                                "cornerRadius": 8,
+                                "gap": 12,
+                                "height": 40,
+                                "id": "RkjQI",
+                                "name": "监控设备",
+                                "padding": [
+                                    0,
+                                    12
+                                ],
+                                "type": "frame",
+                                "width": "fill_container"
+                            },
+                            {
+                                "alignItems": "center",
+                                "children": [
+                                    {
+                                        "fill": "#64748B",
+                                        "height": 20,
+                                        "iconFontFamily": "lucide",
+                                        "iconFontName": "bell",
+                                        "id": "pfhbC",
+                                        "name": "navIcon4",
+                                        "type": "icon_font",
+                                        "width": 20
+                                    },
+                                    {
+                                        "content": "告警管理",
+                                        "fill": "#475569",
+                                        "fontFamily": "Inter",
+                                        "fontSize": 14,
+                                        "fontWeight": "500",
+                                        "id": "3Ie3Q",
+                                        "name": "navText4",
+                                        "type": "text"
+                                    }
+                                ],
+                                "cornerRadius": 8,
+                                "gap": 12,
+                                "height": 40,
+                                "id": "lpPwo",
+                                "name": "告警管理",
+                                "padding": [
+                                    0,
+                                    12
+                                ],
+                                "type": "frame",
+                                "width": "fill_container"
+                            },
+                            {
+                                "alignItems": "center",
+                                "children": [
+                                    {
+                                        "fill": "#64748B",
+                                        "height": 20,
+                                        "iconFontFamily": "lucide",
+                                        "iconFontName": "settings",
+                                        "id": "4QV2u",
+                                        "name": "navIcon5",
+                                        "type": "icon_font",
+                                        "width": 20
+                                    },
+                                    {
+                                        "content": "系统设置",
+                                        "fill": "#475569",
+                                        "fontFamily": "Inter",
+                                        "fontSize": 14,
+                                        "fontWeight": "500",
+                                        "id": "VQACV",
+                                        "name": "navText5",
+                                        "type": "text"
+                                    }
+                                ],
+                                "cornerRadius": 8,
+                                "gap": 12,
+                                "height": 40,
+                                "id": "xkkAn",
+                                "name": "系统设置",
+                                "padding": [
+                                    0,
+                                    12
+                                ],
+                                "type": "frame",
+                                "width": "fill_container"
+                            }
+                        ],
+                        "gap": 4,
+                        "id": "QoCHm",
+                        "layout": "vertical",
+                        "name": "导航菜单",
+                        "padding": [
+                            12,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "frame",
+                        "width": "fill_container"
+                    }
+                ],
+                "fill": "#FFFFFF",
+                "gap": 24,
+                "height": "fill_container",
+                "id": "XiSwN",
+                "layout": "vertical",
+                "name": "侧边栏",
+                "padding": [
+                    20,
+                    16
+                ],
+                "type": "frame",
+                "width": 240
+            },
+            {
+                "children": [
+                    {
+                        "alignItems": "center",
+                        "children": [
+                            {
+                                "alignItems": "center",
+                                "children": [
+                                    {
+                                        "content": "网络运维监控主工作台",
+                                        "fill": "#1E293B",
+                                        "fontFamily": "Inter",
+                                        "fontSize": 24,
+                                        "fontWeight": "700",
+                                        "id": "gSg1Z",
+                                        "name": "pageTitle",
+                                        "type": "text"
+                                    }
+                                ],
+                                "gap": 16,
+                                "id": "njoCJ",
+                                "name": "左侧",
+                                "type": "frame"
+                            },
+                            {
+                                "alignItems": "center",
+                                "children": [
+                                    {
+                                        "alignItems": "center",
+                                        "children": [
+                                            {
+                                                "fill": "#94A3B8",
+                                                "height": 18,
+                                                "iconFontFamily": "lucide",
+                                                "iconFontName": "search",
+                                                "id": "H0j9A",
+                                                "name": "searchIcon",
+                                                "type": "icon_font",
+                                                "width": 18
+                                            },
+                                            {
+                                                "content": "搜索设备、IP地址...",
+                                                "fill": "#94A3B8",
+                                                "fontFamily": "Inter",
+                                                "fontSize": 14,
+                                                "fontWeight": "normal",
+                                                "id": "P4LJ4",
+                                                "name": "searchText",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "cornerRadius": 8,
+                                        "fill": "#FFFFFF",
+                                        "gap": 8,
+                                        "height": 40,
+                                        "id": "WbKnx",
+                                        "name": "搜索框",
+                                        "padding": [
+                                            0,
+                                            16
+                                        ],
+                                        "stroke": {
+                                            "fill": "#E2E8F0",
+                                            "thickness": 1
+                                        },
+                                        "type": "frame",
+                                        "width": 320
+                                    },
+                                    {
+                                        "alignItems": "center",
+                                        "children": [
+                                            {
+                                                "fill": "#64748B",
+                                                "height": 20,
+                                                "iconFontFamily": "lucide",
+                                                "iconFontName": "bell",
+                                                "id": "Xr35d",
+                                                "name": "notifIcon",
+                                                "type": "icon_font",
+                                                "width": 20
+                                            }
+                                        ],
+                                        "cornerRadius": 8,
+                                        "fill": "#FFFFFF",
+                                        "height": 40,
+                                        "id": "jtWbL",
+                                        "justifyContent": "center",
+                                        "name": "通知",
+                                        "type": "frame",
+                                        "width": 40
+                                    },
+                                    {
+                                        "alignItems": "center",
+                                        "children": [
+                                            {
+                                                "content": "A",
+                                                "fill": "#FFFFFF",
+                                                "fontFamily": "Inter",
+                                                "fontSize": 16,
+                                                "fontWeight": "600",
+                                                "id": "MMZZc",
+                                                "name": "userInitial",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "cornerRadius": 20,
+                                        "fill": "#3B82F6",
+                                        "height": 40,
+                                        "id": "Z0Uf9",
+                                        "justifyContent": "center",
+                                        "name": "用户头像",
+                                        "type": "frame",
+                                        "width": 40
+                                    }
+                                ],
+                                "gap": 16,
+                                "id": "EBo4m",
+                                "name": "右侧",
+                                "type": "frame"
+                            }
+                        ],
+                        "gap": 12,
+                        "id": "Sen8b",
+                        "justifyContent": "space_between",
+                        "name": "顶部工具栏",
+                        "type": "frame",
+                        "width": "fill_container"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "alignItems": "center",
+                                        "children": [
+                                            {
+                                                "content": "设备总数",
+                                                "fill": "#64748B",
+                                                "fontFamily": "Inter",
+                                                "fontSize": 14,
+                                                "fontWeight": "500",
+                                                "id": "5dgNL",
+                                                "name": "card1Label",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "alignItems": "center",
+                                                "children": [
+                                                    {
+                                                        "fill": "#3B82F6",
+                                                        "height": 18,
+                                                        "iconFontFamily": "lucide",
+                                                        "iconFontName": "server",
+                                                        "id": "RUkxi",
+                                                        "name": "card1IconInner",
+                                                        "type": "icon_font",
+                                                        "width": 18
+                                                    }
+                                                ],
+                                                "cornerRadius": 8,
+                                                "fill": "#EFF6FF",
+                                                "height": 36,
+                                                "id": "kCKqu",
+                                                "justifyContent": "center",
+                                                "name": "card1Icon",
+                                                "type": "frame",
+                                                "width": 36
+                                            }
+                                        ],
+                                        "id": "B3fEh",
+                                        "justifyContent": "space_between",
+                                        "name": "card1Header",
+                                        "type": "frame",
+                                        "width": "fill_container"
+                                    },
+                                    {
+                                        "content": "256",
+                                        "fill": "#1E293B",
+                                        "fontFamily": "Inter",
+                                        "fontSize": 32,
+                                        "fontWeight": "700",
+                                        "id": "lnYbj",
+                                        "name": "card1Value",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "content": "+12 本月新增",
+                                        "fill": "#10B981",
+                                        "fontFamily": "Inter",
+                                        "fontSize": 12,
+                                        "fontWeight": "500",
+                                        "id": "tKIJ0",
+                                        "name": "card1Change",
+                                        "type": "text"
+                                    }
+                                ],
+                                "cornerRadius": 12,
+                                "fill": "#FFFFFF",
+                                "gap": 6,
+                                "height": 120,
+                                "id": "B3kSh",
+                                "layout": "vertical",
+                                "name": "设备总数",
+                                "padding": 16,
+                                "type": "frame",
+                                "width": "fill_container"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "alignItems": "center",
+                                        "children": [
+                                            {
+                                                "content": "在线设备",
+                                                "fill": "#64748B",
+                                                "fontFamily": "Inter",
+                                                "fontSize": 14,
+                                                "fontWeight": "500",
+                                                "id": "7ydwi",
+                                                "name": "card2Label",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "alignItems": "center",
+                                                "children": [
+                                                    {
+                                                        "fill": "#10B981",
+                                                        "height": 18,
+                                                        "iconFontFamily": "lucide",
+                                                        "iconFontName": "circle-check",
+                                                        "id": "NaDQd",
+                                                        "name": "card2IconInner",
+                                                        "type": "icon_font",
+                                                        "width": 18
+                                                    }
+                                                ],
+                                                "cornerRadius": 8,
+                                                "fill": "#ECFDF5",
+                                                "height": 36,
+                                                "id": "8XHdw",
+                                                "justifyContent": "center",
+                                                "name": "card2Icon",
+                                                "type": "frame",
+                                                "width": 36
+                                            }
+                                        ],
+                                        "id": "mIjYE",
+                                        "justifyContent": "space_between",
+                                        "name": "card2Header",
+                                        "type": "frame",
+                                        "width": "fill_container"
+                                    },
+                                    {
+                                        "content": "248",
+                                        "fill": "#1E293B",
+                                        "fontFamily": "Inter",
+                                        "fontSize": 32,
+                                        "fontWeight": "700",
+                                        "id": "gyAYm",
+                                        "name": "card2Value",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "content": "96.9% 在线率",
+                                        "fill": "#10B981",
+                                        "fontFamily": "Inter",
+                                        "fontSize": 12,
+                                        "fontWeight": "500",
+                                        "id": "9Gg7T",
+                                        "name": "card2Change",
+                                        "type": "text"
+                                    }
+                                ],
+                                "cornerRadius": 12,
+                                "fill": "#FFFFFF",
+                                "gap": 6,
+                                "height": 120,
+                                "id": "S8Yuc",
+                                "layout": "vertical",
+                                "name": "在线设备",
+                                "padding": 16,
+                                "type": "frame",
+                                "width": "fill_container"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "alignItems": "center",
+                                        "children": [
+                                            {
+                                                "content": "离线设备",
+                                                "fill": "#64748B",
+                                                "fontFamily": "Inter",
+                                                "fontSize": 14,
+                                                "fontWeight": "500",
+                                                "id": "yAUi6",
+                                                "name": "card3Label",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "alignItems": "center",
+                                                "children": [
+                                                    {
+                                                        "fill": "#EF4444",
+                                                        "height": 18,
+                                                        "iconFontFamily": "lucide",
+                                                        "iconFontName": "circle-x",
+                                                        "id": "taFf4",
+                                                        "name": "card3IconInner",
+                                                        "type": "icon_font",
+                                                        "width": 18
+                                                    }
+                                                ],
+                                                "cornerRadius": 8,
+                                                "fill": "#FEF2F2",
+                                                "height": 36,
+                                                "id": "629H8",
+                                                "justifyContent": "center",
+                                                "name": "card3Icon",
+                                                "type": "frame",
+                                                "width": 36
+                                            }
+                                        ],
+                                        "id": "FyE2o",
+                                        "justifyContent": "space_between",
+                                        "name": "card3Header",
+                                        "type": "frame",
+                                        "width": "fill_container"
+                                    },
+                                    {
+                                        "content": "8",
+                                        "fill": "#1E293B",
+                                        "fontFamily": "Inter",
+                                        "fontSize": 32,
+                                        "fontWeight": "700",
+                                        "id": "wyoP7",
+                                        "name": "card3Value",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "content": "-3 较昨日",
+                                        "fill": "#10B981",
+                                        "fontFamily": "Inter",
+                                        "fontSize": 12,
+                                        "fontWeight": "500",
+                                        "id": "tZszU",
+                                        "name": "card3Change",
+                                        "type": "text"
+                                    }
+                                ],
+                                "cornerRadius": 12,
+                                "fill": "#FFFFFF",
+                                "gap": 6,
+                                "height": 120,
+                                "id": "aLf0b",
+                                "layout": "vertical",
+                                "name": "离线设备",
+                                "padding": 16,
+                                "type": "frame",
+                                "width": "fill_container"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "alignItems": "center",
+                                        "children": [
+                                            {
+                                                "content": "活跃告警",
+                                                "fill": "#64748B",
+                                                "fontFamily": "Inter",
+                                                "fontSize": 14,
+                                                "fontWeight": "500",
+                                                "id": "Y54cP",
+                                                "name": "card4Label",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "alignItems": "center",
+                                                "children": [
+                                                    {
+                                                        "fill": "#F59E0B",
+                                                        "height": 18,
+                                                        "iconFontFamily": "lucide",
+                                                        "iconFontName": "triangle-alert",
+                                                        "id": "lRqh2",
+                                                        "name": "card4IconInner",
+                                                        "type": "icon_font",
+                                                        "width": 18
+                                                    }
+                                                ],
+                                                "cornerRadius": 8,
+                                                "fill": "#FEF3C7",
+                                                "height": 36,
+                                                "id": "ll8Hb",
+                                                "justifyContent": "center",
+                                                "name": "card4Icon",
+                                                "type": "frame",
+                                                "width": 36
+                                            }
+                                        ],
+                                        "id": "5RdtJ",
+                                        "justifyContent": "space_between",
+                                        "name": "card4Header",
+                                        "type": "frame",
+                                        "width": "fill_container"
+                                    },
+                                    {
+                                        "content": "15",
+                                        "fill": "#1E293B",
+                                        "fontFamily": "Inter",
+                                        "fontSize": 32,
+                                        "fontWeight": "700",
+                                        "id": "3qdCD",
+                                        "name": "card4Value",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "content": "5 严重告警",
+                                        "fill": "#EF4444",
+                                        "fontFamily": "Inter",
+                                        "fontSize": 12,
+                                        "fontWeight": "500",
+                                        "id": "QqbBT",
+                                        "name": "card4Change",
+                                        "type": "text"
+                                    }
+                                ],
+                                "cornerRadius": 12,
+                                "fill": "#FFFFFF",
+                                "gap": 6,
+                                "height": 120,
+                                "id": "a1GaS",
+                                "layout": "vertical",
+                                "name": "活跃告警",
+                                "padding": 16,
+                                "type": "frame",
+                                "width": "fill_container"
+                            }
+                        ],
+                        "gap": 16,
+                        "id": "JBRag",
+                        "name": "状态概览",
+                        "type": "frame",
+                        "width": "fill_container"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "alignItems": "center",
+                                        "children": [
+                                            {
+                                                "alignItems": "center",
+                                                "children": [
+                                                    {
+                                                        "alignItems": "center",
+                                                        "children": [
+                                                            {
+                                                                "fill": "#3B82F6",
+                                                                "height": 20,
+                                                                "iconFontFamily": "lucide",
+                                                                "iconFontName": "server",
+                                                                "id": "uQ6sW",
+                                                                "name": "deviceIcon",
+                                                                "type": "icon_font",
+                                                                "width": 20
+                                                            },
+                                                            {
+                                                                "content": "网络设备",
+                                                                "fill": "#1E293B",
+                                                                "fontFamily": "Inter",
+                                                                "fontSize": 16,
+                                                                "fontWeight": "600",
+                                                                "id": "IbT7M",
+                                                                "name": "deviceTitle",
+                                                                "type": "text"
+                                                            }
+                                                        ],
+                                                        "gap": 8,
+                                                        "id": "WJVay",
+                                                        "name": "deviceHeaderLeft",
+                                                        "type": "frame"
+                                                    },
+                                                    {
+                                                        "descendants": {
+                                                            "8YKhm": {
+                                                                "content": "告警"
+                                                            },
+                                                            "X9aO6": {
+                                                                "content": "在线"
+                                                            },
+                                                            "ae91V": {
+                                                                "content": "离线"
+                                                            },
+                                                            "bzNMM": {
+                                                                "content": "全部"
+                                                            },
+                                                            "s6zG3": {
+                                                                "enabled": false
+                                                            }
+                                                        },
+                                                        "height": 29,
+                                                        "id": "ysWUj",
+                                                        "name": "tabs1",
+                                                        "ref": "kmF8j",
+                                                        "type": "ref",
+                                                        "width": 300
+                                                    }
+                                                ],
+                                                "gap": 16,
+                                                "id": "dce2D",
+                                                "name": "左侧组",
+                                                "type": "frame"
+                                            },
+                                            {
+                                                "alignItems": "center",
+                                                "children": [
+                                                    {
+                                                        "height": 32,
+                                                        "id": "wBgwF",
+                                                        "name": "delBtn1",
+                                                        "ref": "S7wzW",
+                                                        "type": "ref",
+                                                        "width": 80
+                                                    },
+                                                    {
+                                                        "height": 32,
+                                                        "id": "C8tZS",
+                                                        "name": "addBtn1",
+                                                        "ref": "cdQ4P",
+                                                        "type": "ref",
+                                                        "width": 80
+                                                    }
+                                                ],
+                                                "gap": 8,
+                                                "id": "kbHmG",
+                                                "name": "右侧组",
+                                                "type": "frame"
+                                            }
+                                        ],
+                                        "gap": 16,
+                                        "id": "DdtiX",
+                                        "justifyContent": "space_between",
+                                        "name": "deviceHeader",
+                                        "padding": [
+                                            0,
+                                            0,
+                                            8,
+                                            0
+                                        ],
+                                        "type": "frame",
+                                        "width": "fill_container"
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "alignItems": "center",
+                                                "children": [
+                                                    {
+                                                        "id": "wdtAW",
+                                                        "name": "headerCb",
+                                                        "ref": "cYYmV",
+                                                        "type": "ref"
+                                                    },
+                                                    {
+                                                        "content": "设备名称",
+                                                        "fill": "#64748B",
+                                                        "fontFamily": "Inter",
+                                                        "fontSize": 12,
+                                                        "fontWeight": "600",
+                                                        "id": "YFfU6",
+                                                        "name": "thName",
+                                                        "textGrowth": "fixed-width",
+                                                        "type": "text",
+                                                        "width": 120
+                                                    },
+                                                    {
+                                                        "content": "IP地址",
+                                                        "fill": "#64748B",
+                                                        "fontFamily": "Inter",
+                                                        "fontSize": 12,
+                                                        "fontWeight": "600",
+                                                        "id": "w1Vwt",
+                                                        "name": "thIP",
+                                                        "textGrowth": "fixed-width",
+                                                        "type": "text",
+                                                        "width": 100
+                                                    },
+                                                    {
+                                                        "content": "设备类型",
+                                                        "fill": "#64748B",
+                                                        "fontFamily": "Inter",
+                                                        "fontSize": 12,
+                                                        "fontWeight": "600",
+                                                        "id": "BiwEV",
+                                                        "name": "thType",
+                                                        "textGrowth": "fixed-width",
+                                                        "type": "text",
+                                                        "width": 70
+                                                    },
+                                                    {
+                                                        "content": "状态",
+                                                        "fill": "#64748B",
+                                                        "fontFamily": "Inter",
+                                                        "fontSize": 12,
+                                                        "fontWeight": "600",
+                                                        "id": "mNgoO",
+                                                        "name": "thStatus",
+                                                        "textGrowth": "fixed-width",
+                                                        "type": "text",
+                                                        "width": "fill_container"
+                                                    }
+                                                ],
+                                                "cornerRadius": [
+                                                    6,
+                                                    6,
+                                                    0,
+                                                    0
+                                                ],
+                                                "fill": "#F8FAFC",
+                                                "gap": 12,
+                                                "height": 40,
+                                                "id": "Gp7LS",
+                                                "name": "tableHeader",
+                                                "padding": [
+                                                    0,
+                                                    12
+                                                ],
+                                                "type": "frame",
+                                                "width": "fill_container"
+                                            },
+                                            {
+                                                "alignItems": "center",
+                                                "children": [
+                                                    {
+                                                        "id": "vzaAX",
+                                                        "name": "row1Cb",
+                                                        "ref": "cYYmV",
+                                                        "type": "ref"
+                                                    },
+                                                    {
+                                                        "content": "Core-Switch-01",
+                                                        "fill": "#1E293B",
+                                                        "fontFamily": "Inter",
+                                                        "fontSize": 13,
+                                                        "fontWeight": "500",
+                                                        "id": "Id3cc",
+                                                        "name": "r1Name",
+                                                        "textGrowth": "fixed-width",
+                                                        "type": "text",
+                                                        "width": 120
+                                                    },
+                                                    {
+                                                        "content": "192.168.1.1",
+                                                        "fill": "#475569",
+                                                        "fontFamily": "Inter",
+                                                        "fontSize": 13,
+                                                        "fontWeight": "normal",
+                                                        "id": "VDx9B",
+                                                        "name": "r1IP",
+                                                        "textGrowth": "fixed-width",
+                                                        "type": "text",
+                                                        "width": 100
+                                                    },
+                                                    {
+                                                        "content": "交换机",
+                                                        "fill": "#475569",
+                                                        "fontFamily": "Inter",
+                                                        "fontSize": 13,
+                                                        "fontWeight": "normal",
+                                                        "id": "Pu0HW",
+                                                        "name": "r1Type",
+                                                        "textGrowth": "fixed-width",
+                                                        "type": "text",
+                                                        "width": 70
+                                                    },
+                                                    {
+                                                        "alignItems": "center",
+                                                        "children": [
+                                                            {
+                                                                "fill": "#10B981",
+                                                                "height": 6,
+                                                                "id": "xcMeW",
+                                                                "name": "r1StatusDot",
+                                                                "type": "ellipse",
+                                                                "width": 6
+                                                            },
+                                                            {
+                                                                "content": "在线",
+                                                                "fill": "#10B981",
+                                                                "fontFamily": "Inter",
+                                                                "fontSize": 12,
+                                                                "fontWeight": "500",
+                                                                "id": "NdM7O",
+                                                                "name": "r1StatusText",
+                                                                "type": "text"
+                                                            }
+                                                        ],
+                                                        "cornerRadius": 12,
+                                                        "fill": "#ECFDF5",
+                                                        "gap": 4,
+                                                        "height": 24,
+                                                        "id": "haZ7A",
+                                                        "name": "r1Status",
+                                                        "padding": [
+                                                            0,
+                                                            8
+                                                        ],
+                                                        "type": "frame"
+                                                    }
+                                                ],
+                                                "gap": 12,
+                                                "height": 48,
+                                                "id": "QMxAr",
+                                                "name": "row1",
+                                                "padding": [
+                                                    0,
+                                                    12
+                                                ],
+                                                "stroke": {
+                                                    "fill": "#F1F5F9",
+                                                    "thickness": {
+                                                        "bottom": 1
+                                                    }
+                                                },
+                                                "type": "frame",
+                                                "width": "fill_container"
+                                            },
+                                            {
+                                                "alignItems": "center",
+                                                "children": [
+                                                    {
+                                                        "id": "eO5y8",
+                                                        "name": "row2Cb",
+                                                        "ref": "EZw7r",
+                                                        "type": "ref"
+                                                    },
+                                                    {
+                                                        "content": "Router-Main-01",
+                                                        "fill": "#1E293B",
+                                                        "fontFamily": "Inter",
+                                                        "fontSize": 13,
+                                                        "fontWeight": "500",
+                                                        "id": "M2qd4",
+                                                        "name": "r2Name",
+                                                        "textGrowth": "fixed-width",
+                                                        "type": "text",
+                                                        "width": 120
+                                                    },
+                                                    {
+                                                        "content": "192.168.1.254",
+                                                        "fill": "#475569",
+                                                        "fontFamily": "Inter",
+                                                        "fontSize": 13,
+                                                        "fontWeight": "normal",
+                                                        "id": "ZyQUD",
+                                                        "name": "r2IP",
+                                                        "textGrowth": "fixed-width",
+                                                        "type": "text",
+                                                        "width": 100
+                                                    },
+                                                    {
+                                                        "content": "路由器",
+                                                        "fill": "#475569",
+                                                        "fontFamily": "Inter",
+                                                        "fontSize": 13,
+                                                        "fontWeight": "normal",
+                                                        "id": "HUbQa",
+                                                        "name": "r2Type",
+                                                        "textGrowth": "fixed-width",
+                                                        "type": "text",
+                                                        "width": 70
+                                                    },
+                                                    {
+                                                        "alignItems": "center",
+                                                        "children": [
+                                                            {
+                                                                "fill": "#10B981",
+                                                                "height": 6,
+                                                                "id": "TY8Gg",
+                                                                "name": "r2StatusDot",
+                                                                "type": "ellipse",
+                                                                "width": 6
+                                                            },
+                                                            {
+                                                                "content": "在线",
+                                                                "fill": "#10B981",
+                                                                "fontFamily": "Inter",
+                                                                "fontSize": 12,
+                                                                "fontWeight": "500",
+                                                                "id": "i0OPr",
+                                                                "name": "r2StatusText",
+                                                                "type": "text"
+                                                            }
+                                                        ],
+                                                        "cornerRadius": 12,
+                                                        "fill": "#ECFDF5",
+                                                        "gap": 4,
+                                                        "height": 24,
+                                                        "id": "PmCZl",
+                                                        "name": "r2Status",
+                                                        "padding": [
+                                                            0,
+                                                            8
+                                                        ],
+                                                        "type": "frame"
+                                                    }
+                                                ],
+                                                "gap": 12,
+                                                "height": 48,
+                                                "id": "TllEu",
+                                                "name": "row2",
+                                                "padding": [
+                                                    0,
+                                                    12
+                                                ],
+                                                "stroke": {
+                                                    "fill": "#F1F5F9",
+                                                    "thickness": {
+                                                        "bottom": 1
+                                                    }
+                                                },
+                                                "type": "frame",
+                                                "width": "fill_container"
+                                            },
+                                            {
+                                                "alignItems": "center",
+                                                "children": [
+                                                    {
+                                                        "id": "iXHaf",
+                                                        "name": "row3Cb",
+                                                        "ref": "cYYmV",
+                                                        "type": "ref"
+                                                    },
+                                                    {
+                                                        "content": "Firewall-Edge-01",
+                                                        "fill": "#1E293B",
+                                                        "fontFamily": "Inter",
+                                                        "fontSize": 13,
+                                                        "fontWeight": "500",
+                                                        "id": "WRgRk",
+                                                        "name": "r3Name",
+                                                        "textGrowth": "fixed-width",
+                                                        "type": "text",
+                                                        "width": 120
+                                                    },
+                                                    {
+                                                        "content": "10.0.0.1",
+                                                        "fill": "#475569",
+                                                        "fontFamily": "Inter",
+                                                        "fontSize": 13,
+                                                        "fontWeight": "normal",
+                                                        "id": "D9pKV",
+                                                        "name": "r3IP",
+                                                        "textGrowth": "fixed-width",
+                                                        "type": "text",
+                                                        "width": 100
+                                                    },
+                                                    {
+                                                        "content": "防火墙",
+                                                        "fill": "#475569",
+                                                        "fontFamily": "Inter",
+                                                        "fontSize": 13,
+                                                        "fontWeight": "normal",
+                                                        "id": "ZX14Z",
+                                                        "name": "r3Type",
+                                                        "textGrowth": "fixed-width",
+                                                        "type": "text",
+                                                        "width": 70
+                                                    },
+                                                    {
+                                                        "alignItems": "center",
+                                                        "children": [
+                                                            {
+                                                                "fill": "#F59E0B",
+                                                                "height": 6,
+                                                                "id": "R2Jos",
+                                                                "name": "r3StatusDot",
+                                                                "type": "ellipse",
+                                                                "width": 6
+                                                            },
+                                                            {
+                                                                "content": "告警",
+                                                                "fill": "#F59E0B",
+                                                                "fontFamily": "Inter",
+                                                                "fontSize": 12,
+                                                                "fontWeight": "500",
+                                                                "id": "GoC4A",
+                                                                "name": "r3StatusText",
+                                                                "type": "text"
+                                                            }
+                                                        ],
+                                                        "cornerRadius": 12,
+                                                        "fill": "#FEF3C7",
+                                                        "gap": 4,
+                                                        "height": 24,
+                                                        "id": "GgRtL",
+                                                        "name": "r3Status",
+                                                        "padding": [
+                                                            0,
+                                                            8
+                                                        ],
+                                                        "type": "frame"
+                                                    }
+                                                ],
+                                                "gap": 12,
+                                                "height": 48,
+                                                "id": "KoXhp",
+                                                "name": "row3",
+                                                "padding": [
+                                                    0,
+                                                    12
+                                                ],
+                                                "stroke": {
+                                                    "fill": "#F1F5F9",
+                                                    "thickness": {
+                                                        "bottom": 1
+                                                    }
+                                                },
+                                                "type": "frame",
+                                                "width": "fill_container"
+                                            },
+                                            {
+                                                "alignItems": "center",
+                                                "children": [
+                                                    {
+                                                        "id": "46eAP",
+                                                        "name": "row4Cb",
+                                                        "ref": "EZw7r",
+                                                        "type": "ref"
+                                                    },
+                                                    {
+                                                        "content": "AP-Floor2-03",
+                                                        "fill": "#1E293B",
+                                                        "fontFamily": "Inter",
+                                                        "fontSize": 13,
+                                                        "fontWeight": "500",
+                                                        "id": "8BKMc",
+                                                        "name": "r4Name",
+                                                        "textGrowth": "fixed-width",
+                                                        "type": "text",
+                                                        "width": 120
+                                                    },
+                                                    {
+                                                        "content": "192.168.2.103",
+                                                        "fill": "#475569",
+                                                        "fontFamily": "Inter",
+                                                        "fontSize": 13,
+                                                        "fontWeight": "normal",
+                                                        "id": "IFS4V",
+                                                        "name": "r4IP",
+                                                        "textGrowth": "fixed-width",
+                                                        "type": "text",
+                                                        "width": 100
+                                                    },
+                                                    {
+                                                        "content": "AP",
+                                                        "fill": "#475569",
+                                                        "fontFamily": "Inter",
+                                                        "fontSize": 13,
+                                                        "fontWeight": "normal",
+                                                        "id": "AM34u",
+                                                        "name": "r4Type",
+                                                        "textGrowth": "fixed-width",
+                                                        "type": "text",
+                                                        "width": 70
+                                                    },
+                                                    {
+                                                        "alignItems": "center",
+                                                        "children": [
+                                                            {
+                                                                "fill": "#EF4444",
+                                                                "height": 6,
+                                                                "id": "f8rE1",
+                                                                "name": "r4StatusDot",
+                                                                "type": "ellipse",
+                                                                "width": 6
+                                                            },
+                                                            {
+                                                                "content": "离线",
+                                                                "fill": "#EF4444",
+                                                                "fontFamily": "Inter",
+                                                                "fontSize": 12,
+                                                                "fontWeight": "500",
+                                                                "id": "3mR6P",
+                                                                "name": "r4StatusText",
+                                                                "type": "text"
+                                                            }
+                                                        ],
+                                                        "cornerRadius": 12,
+                                                        "fill": "#FEF2F2",
+                                                        "gap": 4,
+                                                        "height": 24,
+                                                        "id": "KNqWb",
+                                                        "name": "r4Status",
+                                                        "padding": [
+                                                            0,
+                                                            8
+                                                        ],
+                                                        "type": "frame"
+                                                    }
+                                                ],
+                                                "gap": 12,
+                                                "height": 48,
+                                                "id": "yqEgS",
+                                                "name": "row4",
+                                                "padding": [
+                                                    0,
+                                                    12
+                                                ],
+                                                "type": "frame",
+                                                "width": "fill_container"
+                                            }
+                                        ],
+                                        "height": "fill_container",
+                                        "id": "N8wEQ",
+                                        "layout": "vertical",
+                                        "name": "设备表格",
+                                        "type": "frame",
+                                        "width": "fill_container"
+                                    }
+                                ],
+                                "cornerRadius": 12,
+                                "fill": "#FFFFFF",
+                                "gap": 12,
+                                "height": "fill_container",
+                                "id": "lQbGL",
+                                "layout": "vertical",
+                                "name": "网络设备列表",
+                                "padding": 16,
+                                "type": "frame",
+                                "width": "fill_container"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "alignItems": "center",
+                                        "children": [
+                                            {
+                                                "alignItems": "center",
+                                                "children": [
+                                                    {
+                                                        "alignItems": "center",
+                                                        "children": [
+                                                            {
+                                                                "fill": "#8B5CF6",
+                                                                "height": 20,
+                                                                "iconFontFamily": "lucide",
+                                                                "iconFontName": "monitor",
+                                                                "id": "WODh4",
+                                                                "name": "monitorIcon",
+                                                                "type": "icon_font",
+                                                                "width": 20
+                                                            },
+                                                            {
+                                                                "content": "监控设备",
+                                                                "fill": "#1E293B",
+                                                                "fontFamily": "Inter",
+                                                                "fontSize": 16,
+                                                                "fontWeight": "600",
+                                                                "id": "eCdIf",
+                                                                "name": "monitorTitle",
+                                                                "type": "text"
+                                                            }
+                                                        ],
+                                                        "gap": 8,
+                                                        "id": "F0brE",
+                                                        "name": "monitorHeaderLeft",
+                                                        "type": "frame"
+                                                    },
+                                                    {
+                                                        "descendants": {
+                                                            "8YKhm": {
+                                                                "enabled": false
+                                                            },
+                                                            "X9aO6": {
+                                                                "content": "录制中"
+                                                            },
+                                                            "ae91V": {
+                                                                "content": "离线"
+                                                            },
+                                                            "bzNMM": {
+                                                                "content": "全部"
+                                                            },
+                                                            "s6zG3": {
+                                                                "enabled": false
+                                                            }
+                                                        },
+                                                        "height": 29,
+                                                        "id": "xt3JW",
+                                                        "name": "tabs2",
+                                                        "ref": "kmF8j",
+                                                        "type": "ref",
+                                                        "width": 250
+                                                    }
+                                                ],
+                                                "gap": 16,
+                                                "id": "BYgSB",
+                                                "name": "左侧组",
+                                                "type": "frame"
+                                            },
+                                            {
+                                                "alignItems": "center",
+                                                "children": [
+                                                    {
+                                                        "height": 32,
+                                                        "id": "PHYjC",
+                                                        "name": "delBtn2",
+                                                        "ref": "S7wzW",
+                                                        "type": "ref",
+                                                        "width": 80
+                                                    },
+                                                    {
+                                                        "height": 32,
+                                                        "id": "m3kLz",
+                                                        "name": "addBtn2",
+                                                        "ref": "cdQ4P",
+                                                        "type": "ref",
+                                                        "width": 80
+                                                    }
+                                                ],
+                                                "gap": 8,
+                                                "id": "3Desu",
+                                                "name": "右侧组",
+                                                "type": "frame"
+                                            }
+                                        ],
+                                        "gap": 16,
+                                        "id": "VJwi5",
+                                        "justifyContent": "space_between",
+                                        "name": "monitorHeader",
+                                        "padding": [
+                                            0,
+                                            0,
+                                            8,
+                                            0
+                                        ],
+                                        "type": "frame",
+                                        "width": "fill_container"
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "alignItems": "center",
+                                                "children": [
+                                                    {
+                                                        "id": "3ZeUG",
+                                                        "name": "mCard1Cb",
+                                                        "ref": "EZw7r",
+                                                        "type": "ref"
+                                                    },
+                                                    {
+                                                        "alignItems": "center",
+                                                        "children": [
+                                                            {
+                                                                "fill": "#3B82F6",
+                                                                "height": 24,
+                                                                "iconFontFamily": "lucide",
+                                                                "iconFontName": "camera",
+                                                                "id": "0UUNa",
+                                                                "name": "mCard1Icon",
+                                                                "type": "icon_font",
+                                                                "width": 24
+                                                            }
+                                                        ],
+                                                        "cornerRadius": 10,
+                                                        "fill": "#DBEAFE",
+                                                        "height": 48,
+                                                        "id": "hmuM1",
+                                                        "justifyContent": "center",
+                                                        "name": "mCard1Left",
+                                                        "type": "frame",
+                                                        "width": 48
+                                                    },
+                                                    {
+                                                        "children": [
+                                                            {
+                                                                "content": "大门监控-CAM01",
+                                                                "fill": "#1E293B",
+                                                                "fontFamily": "Inter",
+                                                                "fontSize": 14,
+                                                                "fontWeight": "600",
+                                                                "id": "iZ80F",
+                                                                "name": "mCard1Name",
+                                                                "type": "text"
+                                                            },
+                                                            {
+                                                                "content": "大厅入口 · 1080P",
+                                                                "fill": "#64748B",
+                                                                "fontFamily": "Inter",
+                                                                "fontSize": 12,
+                                                                "fontWeight": "normal",
+                                                                "id": "t5HgP",
+                                                                "name": "mCard1Detail",
+                                                                "type": "text"
+                                                            }
+                                                        ],
+                                                        "gap": 4,
+                                                        "id": "YRZgZ",
+                                                        "layout": "vertical",
+                                                        "name": "mCard1Info",
+                                                        "type": "frame",
+                                                        "width": "fill_container"
+                                                    },
+                                                    {
+                                                        "alignItems": "center",
+                                                        "children": [
+                                                            {
+                                                                "fill": "#10B981",
+                                                                "height": 6,
+                                                                "id": "btQma",
+                                                                "name": "mCard1Dot",
+                                                                "type": "ellipse",
+                                                                "width": 6
+                                                            },
+                                                            {
+                                                                "content": "录制中",
+                                                                "fill": "#10B981",
+                                                                "fontFamily": "Inter",
+                                                                "fontSize": 12,
+                                                                "fontWeight": "500",
+                                                                "id": "QWycp",
+                                                                "name": "mCard1StatusText",
+                                                                "type": "text"
+                                                            }
+                                                        ],
+                                                        "cornerRadius": 14,
+                                                        "fill": "#ECFDF5",
+                                                        "gap": 4,
+                                                        "height": 28,
+                                                        "id": "drJwC",
+                                                        "name": "mCard1Status",
+                                                        "padding": [
+                                                            0,
+                                                            10
+                                                        ],
+                                                        "type": "frame"
+                                                    }
+                                                ],
+                                                "cornerRadius": 10,
+                                                "fill": "#F8FAFC",
+                                                "gap": 12,
+                                                "id": "hPgFu",
+                                                "name": "mCard1",
+                                                "padding": 14,
+                                                "stroke": {
+                                                    "fill": "#E2E8F0",
+                                                    "thickness": 1
+                                                },
+                                                "type": "frame",
+                                                "width": "fill_container"
+                                            },
+                                            {
+                                                "alignItems": "center",
+                                                "children": [
+                                                    {
+                                                        "id": "tRzzJ",
+                                                        "name": "mCard2Cb",
+                                                        "ref": "cYYmV",
+                                                        "type": "ref"
+                                                    },
+                                                    {
+                                                        "alignItems": "center",
+                                                        "children": [
+                                                            {
+                                                                "fill": "#8B5CF6",
+                                                                "height": 24,
+                                                                "iconFontFamily": "lucide",
+                                                                "iconFontName": "camera",
+                                                                "id": "yN2wQ",
+                                                                "name": "mCard2Icon",
+                                                                "type": "icon_font",
+                                                                "width": 24
+                                                            }
+                                                        ],
+                                                        "cornerRadius": 10,
+                                                        "fill": "#F3E8FF",
+                                                        "height": 48,
+                                                        "id": "qFR6D",
+                                                        "justifyContent": "center",
+                                                        "name": "mCard2Left",
+                                                        "type": "frame",
+                                                        "width": 48
+                                                    },
+                                                    {
+                                                        "children": [
+                                                            {
+                                                                "content": "停车场-CAM02",
+                                                                "fill": "#1E293B",
+                                                                "fontFamily": "Inter",
+                                                                "fontSize": 14,
+                                                                "fontWeight": "600",
+                                                                "id": "8O1K2",
+                                                                "name": "mCard2Name",
+                                                                "type": "text"
+                                                            },
+                                                            {
+                                                                "content": "B1层停车场 · 4K",
+                                                                "fill": "#64748B",
+                                                                "fontFamily": "Inter",
+                                                                "fontSize": 12,
+                                                                "fontWeight": "normal",
+                                                                "id": "0zDZe",
+                                                                "name": "mCard2Detail",
+                                                                "type": "text"
+                                                            }
+                                                        ],
+                                                        "gap": 4,
+                                                        "id": "rgebE",
+                                                        "layout": "vertical",
+                                                        "name": "mCard2Info",
+                                                        "type": "frame",
+                                                        "width": "fill_container"
+                                                    },
+                                                    {
+                                                        "alignItems": "center",
+                                                        "children": [
+                                                            {
+                                                                "fill": "#10B981",
+                                                                "height": 6,
+                                                                "id": "K9KwO",
+                                                                "name": "mCard2Dot",
+                                                                "type": "ellipse",
+                                                                "width": 6
+                                                            },
+                                                            {
+                                                                "content": "录制中",
+                                                                "fill": "#10B981",
+                                                                "fontFamily": "Inter",
+                                                                "fontSize": 12,
+                                                                "fontWeight": "500",
+                                                                "id": "rm5sv",
+                                                                "name": "mCard2StatusText",
+                                                                "type": "text"
+                                                            }
+                                                        ],
+                                                        "cornerRadius": 14,
+                                                        "fill": "#ECFDF5",
+                                                        "gap": 4,
+                                                        "height": 28,
+                                                        "id": "YsDl0",
+                                                        "name": "mCard2Status",
+                                                        "padding": [
+                                                            0,
+                                                            10
+                                                        ],
+                                                        "type": "frame"
+                                                    }
+                                                ],
+                                                "cornerRadius": 10,
+                                                "fill": "#F8FAFC",
+                                                "gap": 12,
+                                                "id": "zM8Mp",
+                                                "name": "mCard2",
+                                                "padding": 14,
+                                                "stroke": {
+                                                    "fill": "#E2E8F0",
+                                                    "thickness": 1
+                                                },
+                                                "type": "frame",
+                                                "width": "fill_container"
+                                            },
+                                            {
+                                                "alignItems": "center",
+                                                "children": [
+                                                    {
+                                                        "id": "ScMVM",
+                                                        "name": "mCard3Cb",
+                                                        "ref": "EZw7r",
+                                                        "type": "ref"
+                                                    },
+                                                    {
+                                                        "alignItems": "center",
+                                                        "children": [
+                                                            {
+                                                                "fill": "#F59E0B",
+                                                                "height": 24,
+                                                                "iconFontFamily": "lucide",
+                                                                "iconFontName": "camera",
+                                                                "id": "7aU2j",
+                                                                "name": "mCard3Icon",
+                                                                "type": "icon_font",
+                                                                "width": 24
+                                                            }
+                                                        ],
+                                                        "cornerRadius": 10,
+                                                        "fill": "#FEF3C7",
+                                                        "height": 48,
+                                                        "id": "cUROx",
+                                                        "justifyContent": "center",
+                                                        "name": "mCard3Left",
+                                                        "type": "frame",
+                                                        "width": 48
+                                                    },
+                                                    {
+                                                        "children": [
+                                                            {
+                                                                "content": "仓库-CAM03",
+                                                                "fill": "#1E293B",
+                                                                "fontFamily": "Inter",
+                                                                "fontSize": 14,
+                                                                "fontWeight": "600",
+                                                                "id": "fsOS8",
+                                                                "name": "mCard3Name",
+                                                                "type": "text"
+                                                            },
+                                                            {
+                                                                "content": "仓库入口 · 1080P",
+                                                                "fill": "#64748B",
+                                                                "fontFamily": "Inter",
+                                                                "fontSize": 12,
+                                                                "fontWeight": "normal",
+                                                                "id": "rxtt2",
+                                                                "name": "mCard3Detail",
+                                                                "type": "text"
+                                                            }
+                                                        ],
+                                                        "gap": 4,
+                                                        "id": "mI9iL",
+                                                        "layout": "vertical",
+                                                        "name": "mCard3Info",
+                                                        "type": "frame",
+                                                        "width": "fill_container"
+                                                    },
+                                                    {
+                                                        "alignItems": "center",
+                                                        "children": [
+                                                            {
+                                                                "fill": "#F59E0B",
+                                                                "height": 6,
+                                                                "id": "VwTJv",
+                                                                "name": "mCard3Dot",
+                                                                "type": "ellipse",
+                                                                "width": 6
+                                                            },
+                                                            {
+                                                                "content": "待维护",
+                                                                "fill": "#F59E0B",
+                                                                "fontFamily": "Inter",
+                                                                "fontSize": 12,
+                                                                "fontWeight": "500",
+                                                                "id": "GmJyq",
+                                                                "name": "mCard3StatusText",
+                                                                "type": "text"
+                                                            }
+                                                        ],
+                                                        "cornerRadius": 14,
+                                                        "fill": "#FEF3C7",
+                                                        "gap": 4,
+                                                        "height": 28,
+                                                        "id": "5XwtJ",
+                                                        "name": "mCard3Status",
+                                                        "padding": [
+                                                            0,
+                                                            10
+                                                        ],
+                                                        "type": "frame"
+                                                    }
+                                                ],
+                                                "cornerRadius": 10,
+                                                "fill": "#F8FAFC",
+                                                "gap": 12,
+                                                "id": "7iI3v",
+                                                "name": "mCard3",
+                                                "padding": 14,
+                                                "stroke": {
+                                                    "fill": "#E2E8F0",
+                                                    "thickness": 1
+                                                },
+                                                "type": "frame",
+                                                "width": "fill_container"
+                                            },
+                                            {
+                                                "alignItems": "center",
+                                                "children": [
+                                                    {
+                                                        "id": "LUOJ5",
+                                                        "name": "mCard4Cb",
+                                                        "ref": "cYYmV",
+                                                        "type": "ref"
+                                                    },
+                                                    {
+                                                        "alignItems": "center",
+                                                        "children": [
+                                                            {
+                                                                "fill": "#EF4444",
+                                                                "height": 24,
+                                                                "iconFontFamily": "lucide",
+                                                                "iconFontName": "camera",
+                                                                "id": "D85BB",
+                                                                "name": "mCard4Icon",
+                                                                "type": "icon_font",
+                                                                "width": 24
+                                                            }
+                                                        ],
+                                                        "cornerRadius": 10,
+                                                        "fill": "#FEE2E2",
+                                                        "height": 48,
+                                                        "id": "ZDS3I",
+                                                        "justifyContent": "center",
+                                                        "name": "mCard4Left",
+                                                        "type": "frame",
+                                                        "width": 48
+                                                    },
+                                                    {
+                                                        "children": [
+                                                            {
+                                                                "content": "后门-CAM04",
+                                                                "fill": "#1E293B",
+                                                                "fontFamily": "Inter",
+                                                                "fontSize": 14,
+                                                                "fontWeight": "600",
+                                                                "id": "NG7Gl",
+                                                                "name": "mCard4Name",
+                                                                "type": "text"
+                                                            },
+                                                            {
+                                                                "content": "后勤通道 · 720P",
+                                                                "fill": "#64748B",
+                                                                "fontFamily": "Inter",
+                                                                "fontSize": 12,
+                                                                "fontWeight": "normal",
+                                                                "id": "3VDiM",
+                                                                "name": "mCard4Detail",
+                                                                "type": "text"
+                                                            }
+                                                        ],
+                                                        "gap": 4,
+                                                        "id": "pf7hS",
+                                                        "layout": "vertical",
+                                                        "name": "mCard4Info",
+                                                        "type": "frame",
+                                                        "width": "fill_container"
+                                                    },
+                                                    {
+                                                        "alignItems": "center",
+                                                        "children": [
+                                                            {
+                                                                "fill": "#EF4444",
+                                                                "height": 6,
+                                                                "id": "oxit0",
+                                                                "name": "mCard4Dot",
+                                                                "type": "ellipse",
+                                                                "width": 6
+                                                            },
+                                                            {
+                                                                "content": "离线",
+                                                                "fill": "#EF4444",
+                                                                "fontFamily": "Inter",
+                                                                "fontSize": 12,
+                                                                "fontWeight": "500",
+                                                                "id": "s6ezq",
+                                                                "name": "mCard4StatusText",
+                                                                "type": "text"
+                                                            }
+                                                        ],
+                                                        "cornerRadius": 14,
+                                                        "fill": "#FEE2E2",
+                                                        "gap": 4,
+                                                        "height": 28,
+                                                        "id": "69rcz",
+                                                        "name": "mCard4Status",
+                                                        "padding": [
+                                                            0,
+                                                            10
+                                                        ],
+                                                        "type": "frame"
+                                                    }
+                                                ],
+                                                "cornerRadius": 10,
+                                                "fill": "#F8FAFC",
+                                                "gap": 12,
+                                                "id": "2qqtS",
+                                                "name": "mCard4",
+                                                "padding": 14,
+                                                "stroke": {
+                                                    "fill": "#E2E8F0",
+                                                    "thickness": 1
+                                                },
+                                                "type": "frame",
+                                                "width": "fill_container"
+                                            }
+                                        ],
+                                        "gap": 12,
+                                        "height": "fill_container",
+                                        "id": "ONEl5",
+                                        "layout": "vertical",
+                                        "name": "监控卡片列表",
+                                        "type": "frame",
+                                        "width": "fill_container"
+                                    }
+                                ],
+                                "cornerRadius": 12,
+                                "fill": "#FFFFFF",
+                                "gap": 12,
+                                "height": "fill_container",
+                                "id": "XhR2H",
+                                "layout": "vertical",
+                                "name": "监控设备列表",
+                                "padding": 16,
+                                "type": "frame",
+                                "width": "fill_container"
+                            }
+                        ],
+                        "gap": 16,
+                        "height": "fill_container",
+                        "id": "6vgRU",
+                        "name": "内容区域",
+                        "type": "frame",
+                        "width": "fill_container"
+                    }
+                ],
+                "gap": 20,
+                "height": "fill_container",
+                "id": "eXv3a",
+                "layout": "vertical",
+                "name": "主内容区",
+                "padding": [
+                    20,
+                    24
+                ],
+                "type": "frame",
+                "width": "fill_container"
+            }
+        ],
+        "fill": "#F5F7FA",
+        "height": 900,
+        "id": "kEYzl",
+        "name": "网络运维监控主工作台",
+        "type": "frame",
+        "width": 1440,
+        "x": 3410,
+        "y": -956
+    }
+]

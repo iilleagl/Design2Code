@@ -1,0 +1,149 @@
+============================================================
+llms.txt - DevUI Pencil Design System
+============================================================
+
+# DevUI Design System | DevUI 设计系统
+
+> DevUI 是华为云开源的企业级 UI 组件库，孵化自华为云 DevCloud 研发工具体系。
+> 设计理念：沉浸 (Immersive) · 灵活 (Flexible) · 至简 (Simplistic)
+> 参考文档: https://devui.design/design-cn/start
+
+## SOURCE FILE | 源文件
+
+- FORMAT: Pencil .pen (Design-as-Code)
+- PATH: designsystem/devUI/components/devUI.pen
+- SYNC_TARGET: Angular / Vue / React (DevUI Component Library)
+- LAYOUT_ENGINE: Pencil Auto Layout (Flex-compatible)
+
+---
+
+## COMPONENT DIRECTORY | 组件目录
+
+### Navigation / 导航类 (7)
+
+| # | Name | Node ID | Type | Description |
+|---|------|---------|------|-------------|
+| 01 | 页签 Tabs | DUS2U | frame | 页签 Pills / Wrapped / Icon 页签，含 default/hover/active/disabled 状态 |
+| 02 | 面包屑 BreadCrumbs | BNX1S | frame | 分隔符、基础面包屑组件、面包屑组 |
+| 03 | 分页器 Pagination | ag313 | frame | 页码组件、分页 Pagination |
+| 04 | 顶部导航 | xGbvq | frame | 顶部导航栏、菜单按钮、头像信息、定位 |
+| 05 | 侧边导航-手风琴 | 0CMMP | frame | 一级/二级菜单、展开/收起、侧边栏 |
+| 06 | 侧边栏-工具链专用导航 | m9gHo | frame | 二级菜单展开/收起、项目选项、下拉面板 |
+| 07 | 头信息 | Rqi61 | frame | 头信息标题面包屑、代码健康度检查、代码仓选项 |
+
+### Form / 表单输入类 (6)
+
+| # | Name | Node ID | Type | Description |
+|---|------|---------|------|-------------|
+| 08 | 按钮 Button | FfKhm | frame | 主要/次要/图标文本/下拉组合按钮 × lg/md/sm × default/hover/active/disabled |
+| 09 | 输入框 TextInput | UaxE1 | frame | 文本输入框、数字输入框、表单标题、表单项 |
+| 10 | 选择框 Select | sfJNO | frame | 下拉选择框(单选/多选)、下拉选项、选择面板、内容下展 |
+| 11 | 复选框 Checkbox | 2b27B | frame | 复选框、复选框文本组合 |
+| 12 | 搜索框 Search | UWJE6 | frame | 搜索框-线框白底风格 |
+| 13 | 分类搜索 CategorySearch | 0bDep | frame | 分类搜索组件 |
+
+### Data Display / 数据展示类 (5)
+
+| # | Name | Node ID | Type | Description |
+|---|------|---------|------|-------------|
+| 14 | 表格 DataTable | 7l0Mm | frame | 表头/表体单项(默认类/合并单元格)、操作列、树结构、优先级图标 |
+| 15 | 卡片 | cFUjw | frame | 基本卡片、带图卡片、项目卡片、有图标/无图标标题、信息展示、计数徽章 |
+| 16 | 标签 Tag | WnKo0 | frame | 标签、辅助标签、常规标签、线性标签 |
+| 17 | 筛选 Filter | UsEWV | frame | 筛选选项单项、筛选选择面板、筛选组件 |
+| 18 | 表单 form | Qyuse | frame | 表单组件(输入/选择/标签/错误/多行组合) |
+
+### Business / 业务组件 (4)
+
+| # | Name | Node ID | Type | Description |
+|---|------|---------|------|-------------|
+| 19 | 业务组件（更多卡片） | D0C5W | frame | 左侧选择卡片、banner卡片、公告卡片、活动卡片、帮助文档卡片 |
+| 20 | 工程首字母图标 | SYWnk | frame | 0-9 / A-Z 字母图标 (40×40) |
+| 21 | 工程首字母图标-32 | HEF9Q | frame | 字母图标 (32×32) |
+| 22 | 数字首字母图标 | QEl7l | frame | 0-9 / A-Z 字母图标 (48×48) |
+
+### Icons / 图标类 (4)
+
+| # | Name | Node ID | Type | Description |
+|---|------|---------|------|-------------|
+| 23 | 操作图标 | QY5Bx | frame | 43个操作图标：新增/帮助/下拉/搜索/设置/关闭/保存/拖拽/过滤/排序等 |
+| 24 | 2D图标 | c3mAv | frame | 16个产品功能图标(服务树/部署/测试/流水线等) |
+| 25 | 2.5D图标 | voXJB | frame | 13个产品功能立体图标 |
+| 26 | 侧边工具栏质感图标 | iIj5S | frame | 8个工具栏质感图标(持续交付/仪表盘/代码管理等) |
+
+### Page Templates / 页面模板 (2)
+
+| # | Name | Node ID | Type | Description |
+|---|------|---------|------|-------------|
+| 27 | 完整拼装页面 | 7zwFy | frame | 配置页、卡片页、列表页完整页面模板 |
+| 28 | 顶部导航质感图标 | wqMp8 | frame | 6个顶部导航质感图标(服务/看板/项目/工作台/首页等) |
+
+---
+
+## DESIGN TOKENS SUMMARY | 设计令牌概要
+
+### Colors 色彩
+- Primary 主色: #5E7CE0 (Default) / #7693F5 (Hover) / #344899 (Active) / #526ECC (Dark Active) / #BECCFA (Disabled)
+- Success 成功: #50D4AB
+- Warning 警告: #FA9841
+- Danger 错误: #F66F6A
+- Info 提示: #5E7CE0
+- Text Primary 主文字: #252B3A
+- Text Secondary 辅助文字: #575D6C / #8A8E99
+- Text Placeholder 占位符: #ADB0B8 / #BABBC0
+- Text Link 链接: #5E7CE0 / #526ECC
+- Border 边框: #DFE1E6 / #ADB0B8 / #D7D8DA
+- Background 背景: #FFFFFF / #F5F5F5 / #F2F5FC / #F5F9FF
+
+### Typography 字体
+- Chinese Primary: Noto Sans SC
+- Chinese Secondary: HarmonyOS Sans SC
+- Latin: Roboto
+- Sizes: 12 / 14 / 15 / 16 / 18 / 22 / 24 / 48 px
+- Weights: normal (400) / 500 / 700
+
+### Spacing 间距
+- Grid: 4px base → 0, 1, 2, 4, 5, 8, 10, 12, 16, 20, 24, 32
+- Common padding patterns: [4, 8] / [4, 12] / [5, 16] / [9, 20] / [8, 8] / [12, 12] / [0, 16]
+
+### Corner Radius 圆角
+- None: 0
+- Small: 1 / 2
+- Default: 4
+- Medium: 5 / 6
+- Large: 8
+- Extra Large: 16
+- Pill: 100 / 999
+
+---
+
+## VARIANT NAMING CONVENTION | 变体命名规范
+
+组件变体使用 "Key=Value" 中文命名格式：
+- 尺寸-Size: lg / md / sm
+- 状态-Status: default / hover / active / disabled
+- 选项状态-status: default / hover / active / disabled
+- 位置-position: startPosition / middleItem / endPosition
+- 内容类型-contentType: textContent / checkBox / text / link / tags / treeStructure / statusWithName
+- 灰色背景-header-bg: true / false
+- 优先级: 低 / 中 / 高
+- 数量-number: 1 / 2 / 3
+- icon or number: icon / number
+
+---
+
+## USAGE NOTES | 使用说明
+
+1. 所有组件均使用 Flex 布局（layout: horizontal），通过 gap / padding / alignItems / justifyContent 控制内部间距和对齐
+2. 按钮组件支持三种尺寸：lg (padding 9/20) / md (padding 5/16) / sm (padding 4/12)
+3. 主要按钮使用实色填充 (#5E7CE0)，次要按钮使用白底 + 边框 (#ADB0B8)
+4. 表格单元格高度统一 42px，表头支持灰色背景 (#F5F5F5) 或白色背景两种风格
+5. 组件边框使用 1px，默认圆角 4px
+6. 禁用状态统一使用浅色填充：主要按钮 #BECCFA，次要按钮 #F5F5F5 + 边框 #DFE1E6
+
+---
+
+## SEE ALSO
+
+- llms-full.txt: 详细组件规范、节点层级、属性映射及转换规则
+- DevUI Design: https://devui.design/design-cn/start
+- DevUI GitHub: https://github.com/DevCloudFE/ng-devui

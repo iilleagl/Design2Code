@@ -1,0 +1,368 @@
+ <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07表格</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: #EEF0F5;
+      min-height: 100vh;
+    }
+
+    /* 主容器 */
+    .page-container {
+      width: 1920px;
+      min-height: 1080px;
+      background-color: #EEF0F5;
+      position: relative;
+    }
+
+    /* 顶栏 */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: #fff;
+      z-index: 100;
+    }
+
+    .top-bar.secondary {
+      top: 40px;
+    }
+
+    /* 内容区域 */
+    .content-wrapper {
+      margin: 92px 20px 20px;
+      max-width: 1880px;
+    }
+
+    /* 工具栏 */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      height: 28px;
+      margin-bottom: 20px;
+    }
+
+    .tab-group {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .tab {
+      padding: 0 12px;
+      height: 28px;
+      line-height: 28px;
+      font-size: 14px;
+      color: #1F2329;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+
+    .tab:hover {
+      background: #F2F3F5;
+    }
+
+    .tab.active {
+      background: #E8F3FF;
+      color: #5170FF;
+      font-weight: 500;
+    }
+
+    .tab-dropdown {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .tab-dropdown::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border: 4px solid transparent;
+      border-top-color: #86909C;
+      margin-left: 4px;
+    }
+
+    .toolbar-divider {
+      width: 1px;
+      height: 18px;
+      background: #DFE1E6;
+      margin: 0 8px;
+    }
+
+    .btn-primary {
+      height: 28px;
+      padding: 0 16px;
+      background: #5170FF;
+      color: #fff;
+      border: none;
+      border-radius: 2px;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-primary:hover {
+      background: #3451D1;
+    }
+
+    .btn-icon {
+      width: 28px;
+      height: 28px;
+      border: none;
+      background: transparent;
+      border-radius: 2px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #4E5969;
+    }
+
+    .btn-icon:hover {
+      background: #F2F3F5;
+    }
+
+    .search-input {
+      width: 200px;
+      height: 28px;
+      padding: 0 12px;
+      border: 1px solid #E5E6EB;
+      border-radius: 2px;
+      font-size: 14px;
+      background: #fff;
+    }
+
+    .search-input::placeholder {
+      color: #86909C;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: #5170FF;
+    }
+
+    .btn-text-icon {
+      height: 18px;
+      padding: 0 8px;
+      background: transparent;
+      border: none;
+      font-size: 14px;
+      color: #4E5969;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-text-icon:hover {
+      color: #1F2329;
+    }
+
+    .ai-badge {
+      width: 28px;
+      height: 28px;
+      background: #5170FF;
+      border-radius: 2px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(81, 112, 255, 0.3);
+    }
+
+    /* 表格卡容器 */
+    .table-card {
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    /* 表格 */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .data-table thead {
+      background: #F7F8FA;
+    }
+
+    .data-table th {
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 500;
+      color: #1F2329;
+      border-bottom: 1px solid #E5E6EB;
+    }
+
+    .data-table th:first-child {
+      width: 48px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .data-table td {
+      padding: 12px 16px;
+      color: #4E5969;
+      border-bottom: 1px solid #F2F3F5;
+    }
+
+    .data-table td:first-child {
+      padding: 12px;
+      text-align: center;
+    }
+
+    .data-table tbody tr:hover {
+      background: #F7F8FA;
+    }
+
+    .data-table input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .status-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 2px;
+      font-size: 12px;
+    }
+
+    .status-tag.success {
+      background: #E8FFEA;
+      color: #00B42A;
+    }
+
+    .status-tag.warning {
+      background: #FFF7E8;
+      color: #FF7D00;
+    }
+
+    .status-tag.info {
+      background: #E8F3FF;
+      color: #5170FF;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <!-- 顶栏 -->
+    <div class="top-bar"></div>
+    <div class="top-bar secondary"></div>
+
+    <div class="content-wrapper">
+      <!-- 工具栏 -->
+      <div class="toolbar">
+        <div class="tab-group">
+          <div class="tab active tab-dropdown">全部</div>
+          <div class="tab">进行中</div>
+          <div class="tab">已完成</div>
+          <div class="tab tab-dropdown">更多</div>
+        </div>
+        <div class="toolbar-divider"></div>
+        <button class="btn-primary">新建</button>
+        <button class="btn-icon" title="添加">+</button>
+        <input type="text" class="search-input" placeholder="搜索...">
+        <button class="btn-text-icon">导入</button>
+        <button class="btn-text-icon">导出</button>
+        <button class="btn-text-icon">筛选</button>
+        <button class="btn-icon" title="设置">⚙</button>
+        <button class="btn-icon" title="刷新">↻</button>
+        <button class="btn-icon" title="更多">⋯</button>
+        <div class="ai-badge" title="AI 助手">AI</div>
+      </div>
+
+      <!-- 表格区域 -->
+      <div class="table-card">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th><input type="checkbox" id="checkAll"></th>
+              <th>名称</th>
+              <th>状态</th>
+              <th>进度</th>
+              <th>负责人</th>
+              <th>创建时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" class="row-check"></td>
+              <td>项目 A</td>
+              <td><span class="status-tag success">进行中</span></td>
+              <td>60%</td>
+              <td>张三</td>
+              <td>2025-02-10</td>
+              <td><button class="btn-text-icon">编辑</button></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="row-check"></td>
+              <td>项目 B</td>
+              <td><span class="status-tag warning">待审核</span></td>
+              <td>80%</td>
+              <td>李四</td>
+              <td>2025-02-09</td>
+              <td><button class="btn-text-icon">编辑</button></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="row-check"></td>
+              <td>项目 C</td>
+              <td><span class="status-tag info">已完成</span></td>
+              <td>100%</td>
+              <td>王五</td>
+              <td>2025-02-08</td>
+              <td><button class="btn-text-icon">编辑</button></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="row-check"></td>
+              <td>项目 D</td>
+              <td><span class="status-tag success">进行中</span></td>
+              <td>30%</td>
+              <td>赵六</td>
+              <td>2025-02-07</td>
+              <td><button class="btn-text-icon">编辑</button></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="row-check"></td>
+              <td>项目 E</td>
+              <td><span class="status-tag warning">待审核</span></td>
+              <td>45%</td>
+              <td>钱七</td>
+              <td>2025-02-06</td>
+              <td><button class="btn-text-icon">编辑</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 全选功能
+    document.getElementById('checkAll').addEventListener('change', function() {
+      const checkboxes = document.querySelectorAll('.row-check');
+      checkboxes.forEach(cb => cb.checked = this.checked);
+    });
+  </script>
+</body>
+</html>

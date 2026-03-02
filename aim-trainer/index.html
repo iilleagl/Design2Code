@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鼠标精度校准 - 点击准确度评估</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #f5f6f8;
+      --panel: #ffffff;
+      --border: #e2e4e8;
+      --accent: #1e6fba;
+      --accent-hover: #165a94;
+      --text: #2c3e50;
+      --text-muted: #6b7c8d;
+      --danger: #c0392b;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow: hidden;
+      cursor: default;
+      user-select: none;
+    }
+
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #app {
+      position: relative;
+      z-index: 1;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ========== 开始界面 ========== */
+    #start-screen {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    #start-screen h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+
+    #start-screen .subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .mode-grid {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 720px;
+    }
+
+    .mode-card {
+      width: 168px;
+      padding: 1.25rem;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-align: left;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+
+    .mode-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 8px rgba(30, 111, 186, 0.12);
+    }
+
+    .mode-card h3 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .mode-card p {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .mode-card .target-preview {
+      width: 32px;
+      height: 32px;
+      margin: 0.75rem 0;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.75;
+    }
+
+    .mode-card.easy .target-preview { width: 40px; height: 40px; }
+    .mode-card.hard .target-preview { width: 24px; height: 24px; }
+
+    /* ========== 游戏界面 ========== */
+    #game-screen {
+      display: none;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+    }
+
+    #game-screen.active {
+      display: flex;
+    }
+
+    .game-hud {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      font-size: 0.8rem;
+    }
+
+    .hud-item {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .hud-item span {
+      color: var(--text-muted);
+    }
+
+    .hud-item strong {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .btn-exit {
+      padding: 0.4rem 0.85rem;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-exit:hover {
+      border-color: var(--text-muted);
+      color: var(--text);
+    }
+
+    .game-area {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    /* 校准目标点 - 工作风：低调蓝灰圆点 */
+    .target {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.85;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: transform 0.05s;
+      pointer-events: auto;
+    }
+
+    .target:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .target::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 28%;
+      height: 28%;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .target.hit {
+      animation: hitFlash 0.12s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes hitFlash {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.2); opacity: 0; }
+    }
+
+    /* 结果界面 */
+    #result-screen {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(245, 246, 248, 0.97);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2rem;
+    }
+
+    #result-screen.active {
+      display: flex;
+    }
+
+    #result-screen h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-box {
+      padding: 1rem 1.5rem;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+
+    .stat-box .value {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .stat-box .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .btn-restart, .btn-menu {
+      padding: 0.6rem 1.25rem;
+      margin: 0 0.4rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-restart {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .btn-restart:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+    }
+
+    .btn-menu {
+      background: var(--panel);
+      color: var(--text);
+    }
+
+    .btn-menu:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div id="app">
+    <!-- 开始界面 -->
+    <div id="start-screen">
+      <h1>鼠标精度校准</h1>
+      <p class="subtitle">点击准确度与反应时延评估 · 建议定期测试以保持操作效率</p>
+      <div class="mode-grid">
+        <div class="mode-card" data-mode="classic" data-targets="30">
+          <h3>标准校准</h3>
+          <div class="target-preview"></div>
+          <p>30 个校准点，不限时。用于基准测试与设备校验。</p>
+        </div>
+        <div class="mode-card easy" data-mode="timed" data-duration="30" data-size="large">
+          <h3>快速评估 · 常规</h3>
+          <div class="target-preview"></div>
+          <p>30 秒内完成尽可能多的有效点击。校准点较大。</p>
+        </div>
+        <div class="mode-card" data-mode="timed" data-duration="60" data-size="normal">
+          <h3>常规评估</h3>
+          <div class="target-preview"></div>
+          <p>60 秒标准校准。推荐用于日常精度检查。</p>
+        </div>
+        <div class="mode-card hard" data-mode="timed" data-duration="45" data-size="small">
+          <h3>高精度校准</h3>
+          <div class="target-preview"></div>
+          <p>45 秒小校准点。用于精细操作场景的评估。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 游戏界面 -->
+    <div id="game-screen">
+      <div class="game-hud">
+        <div class="hud-item">
+          <span>校准分</span>
+          <strong id="score">0</strong>
+        </div>
+        <div class="hud-item">
+          <span>有效</span>
+          <strong id="hits">0</strong>
+        </div>
+        <div class="hud-item">
+          <span>无效</span>
+          <strong id="misses">0</strong>
+        </div>
+        <div class="hud-item">
+          <span>准确率</span>
+          <strong id="accuracy">0%</strong>
+        </div>
+        <div class="hud-item" id="timer-wrap">
+          <span>剩余</span>
+          <strong id="timer">--</strong>
+        </div>
+        <div class="hud-item" id="targets-left-wrap">
+          <span>剩余点数</span>
+          <strong id="targets-left">--</strong>
+        </div>
+        <button class="btn-exit" id="btn-exit">结束测试</button>
+      </div>
+      <div class="game-area" id="game-area"></div>
+    </div>
+
+    <!-- 结果界面 -->
+    <div id="result-screen">
+      <h2>校准完成</h2>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="value" id="final-score">0</div>
+          <div class="label">校准分</div>
+        </div>
+        <div class="stat-box">
+          <div class="value" id="final-accuracy">0%</div>
+          <div class="label">准确率</div>
+        </div>
+        <div class="stat-box">
+          <div class="value" id="final-hits">0</div>
+          <div class="label">有效点击</div>
+        </div>
+        <div class="stat-box">
+          <div class="value" id="final-time">0s</div>
+          <div class="label">用时</div>
+        </div>
+      </div>
+      <div>
+        <button class="btn-restart" id="btn-restart">重新测试</button>
+        <button class="btn-menu" id="btn-menu">返回</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const $ = id => document.getElementById(id);
+    const startScreen = $('start-screen');
+    const gameScreen = $('game-screen');
+    const gameArea = $('game-area');
+    const resultScreen = $('result-screen');
+
+    const state = {
+      mode: 'classic',      // classic | timed
+      targetCount: 30,
+      duration: 0,          // 秒
+      targetSize: 'normal',  // small | normal | large
+      score: 0,
+      hits: 0,
+      misses: 0,
+      targetsLeft: 0,
+      startTime: 0,
+      timerId: null,
+      currentTarget: null,
+    };
+
+    const SIZE_MAP = { small: 24, normal: 40, large: 56 };
+    const POINTS_BASE = 100;
+
+    function getTargetSize() {
+      return SIZE_MAP[state.targetSize] || SIZE_MAP.normal;
+    }
+
+    function randomPos(size) {
+      const padding = size + 20;
+      const rect = gameArea.getBoundingClientRect();
+      return {
+        x: padding + Math.random() * (rect.width - padding * 2),
+        y: padding + Math.random() * (rect.height - padding * 2),
+      };
+    }
+
+    function spawnTarget() {
+      if (state.mode === 'timed' && state.duration > 0) {
+        const elapsed = (Date.now() - state.startTime) / 1000;
+        if (elapsed >= state.duration) {
+          endGame();
+          return;
+        }
+      }
+      if (state.mode === 'classic' && state.targetsLeft <= 0) {
+        endGame();
+        return;
+      }
+
+      const size = getTargetSize();
+      const { x, y } = randomPos(size);
+
+      const el = document.createElement('div');
+      el.className = 'target';
+      el.style.width = size + 'px';
+      el.style.height = size + 'px';
+      el.style.left = x + 'px';
+      el.style.top = y + 'px';
+
+      const spawnTime = Date.now();
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (el.classList.contains('hit')) return;
+        el.classList.add('hit');
+        state.hits++;
+        const reaction = (Date.now() - spawnTime) / 1000;
+        const bonus = Math.max(0, Math.floor(50 - reaction * 20));
+        state.score += POINTS_BASE + bonus;
+        updateHud();
+        setTimeout(() => el.remove(), 150);
+        if (state.mode === 'classic') {
+          state.targetsLeft--;
+          $('targets-left').textContent = state.targetsLeft;
+          if (state.targetsLeft > 0) setTimeout(spawnTarget, 200);
+          else endGame();
+        } else {
+          setTimeout(spawnTarget, 100);
+        }
+      });
+
+      gameArea.appendChild(el);
+      state.currentTarget = el;
+    }
+
+    function updateHud() {
+      const total = state.hits + state.misses;
+      const acc = total > 0 ? Math.round((state.hits / total) * 100) : 0;
+      $('score').textContent = state.score;
+      $('hits').textContent = state.hits;
+      $('misses').textContent = state.misses;
+      $('accuracy').textContent = acc + '%';
+    }
+
+    function runTimer() {
+      const start = state.startTime;
+      state.timerId = setInterval(() => {
+        const elapsed = (Date.now() - start) / 1000;
+        const left = Math.max(0, Math.ceil(state.duration - elapsed));
+        $('timer').textContent = left + 's';
+        if (left <= 0) {
+          clearInterval(state.timerId);
+          endGame();
+        }
+      }, 100);
+    }
+
+    function startGame(config) {
+      state.mode = config.mode || 'classic';
+      state.targetCount = config.targetCount ?? 30;
+      state.duration = config.duration ?? 0;
+      state.targetSize = config.targetSize || 'normal';
+      state.score = 0;
+      state.hits = 0;
+      state.misses = 0;
+      state.targetsLeft = state.mode === 'classic' ? state.targetCount : 999;
+      state.startTime = Date.now();
+
+      startScreen.style.display = 'none';
+      gameScreen.classList.add('active');
+      resultScreen.classList.remove('active');
+      gameArea.innerHTML = '';
+
+      $('timer-wrap').style.display = state.mode === 'timed' ? 'flex' : 'none';
+      $('targets-left-wrap').style.display = state.mode === 'classic' ? 'flex' : 'none';
+      $('targets-left').textContent = state.targetsLeft;
+      $('timer').textContent = state.duration + 's';
+      updateHud();
+
+      if (state.mode === 'timed') runTimer();
+      spawnTarget();
+    }
+
+    function endGame() {
+      if (state.timerId) clearInterval(state.timerId);
+      gameScreen.classList.remove('active');
+      const total = state.hits + state.misses;
+      const acc = total > 0 ? Math.round((state.hits / total) * 100) : 0;
+      const timeUsed = ((Date.now() - state.startTime) / 1000).toFixed(1);
+
+      $('final-score').textContent = state.score;
+      $('final-accuracy').textContent = acc + '%';
+      $('final-hits').textContent = state.hits;
+      $('final-time').textContent = timeUsed + 's';
+      resultScreen.classList.add('active');
+    }
+
+    gameArea.addEventListener('click', (e) => {
+      if (e.target === gameArea) {
+        state.misses++;
+        updateHud();
+      }
+    });
+
+    document.querySelectorAll('.mode-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const mode = card.dataset.mode;
+        const config = {
+          mode,
+          targetSize: card.dataset.size || 'normal',
+        };
+        if (mode === 'classic') {
+          config.targetCount = parseInt(card.dataset.targets, 10) || 30;
+        } else {
+          config.duration = parseInt(card.dataset.duration, 10) || 60;
+        }
+        startGame(config);
+      });
+    });
+
+    $('btn-exit').addEventListener('click', () => {
+      if (state.timerId) clearInterval(state.timerId);
+      gameScreen.classList.remove('active');
+      startScreen.style.display = 'block';
+    });
+
+    $('btn-restart').addEventListener('click', () => {
+      resultScreen.classList.remove('active');
+      startGame({
+        mode: state.mode,
+        targetCount: state.targetCount,
+        duration: state.duration,
+        targetSize: state.targetSize,
+      });
+    });
+
+    $('btn-menu').addEventListener('click', () => {
+      resultScreen.classList.remove('active');
+      startScreen.style.display = 'block';
+    });
+  </script>
+</body>
+</html>

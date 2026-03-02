@@ -1,0 +1,1011 @@
+============================================================
+llms-full.txt - DevUI Pencil Design System
+============================================================
+
+# 1. METADATA | 元数据
+
+PROJECT_NAME: DevUI Design System (华为云 DevUI 设计系统)
+SOURCE_FORMAT: Pencil .pen (version 2.x)
+SOURCE_PATH: designsystem/devUI/components/devUI.pen
+SYNC_TARGET: Angular (ng-devui) / Vue (vue-devui) / React
+LAYOUT_ENGINE: Pencil Auto Layout (Flex-compatible)
+DESIGN_PHILOSOPHY: 沉浸 (Immersive) · 灵活 (Flexible) · 至简 (Simplistic)
+REFERENCE_DOC: https://devui.design/design-cn/start
+THEME_MODES: Light (浅色模式) / Dark (深色模式)
+REUSABLE_COMPONENTS: 0 (本文件为设计规范展示文档，组件以命名约定呈现)
+
+============================================================
+
+# 2. GLOBAL DESIGN TOKENS | 全局设计令牌
+
+============================================================
+
+## 2.1 Colors - Light Mode | 浅色模式颜色
+
+### 2.1.1 Primary Colors | 主要颜色
+| Token Name | Hex | Usage |
+|------------|-----|-------|
+| brand-primary | #5E7CE0 | 主色_默认，品牌主色、主按钮、激活态 |
+| brand-primary-hover | #7693F5 | 主色_悬浮，交互悬浮态 |
+| brand-primary-active | #526ECC | 主色_点击，交互按下态 |
+| border-disabled-bg | #F5F5F6 | 边框_禁用背景色 |
+| border-disabled-border | #DFE1E6 | 边框_禁用边框色 |
+| border-primary | #5E7CE0 | 边框_主色 |
+
+### 2.1.2 Secondary Colors | 次要颜色
+| Token Name | Hex | Usage |
+|------------|-----|-------|
+| nav-bg | #282B33 | 导航栏_背景 |
+| nav-title-bar | #464C59 | 导航栏_标题栏 |
+| nav-hover | #5C6173 | 导航栏_悬浮 |
+| white | #FFFFFF | 纯白 |
+| global-notification | #464D6E | 全局通知背景 |
+
+### 2.1.3 Background & Border Colors | 背景色&边框色
+| Token Name | Hex | Usage |
+|------------|-----|-------|
+| bg-disabled | #F5F5F6 | 禁用背景 |
+| bg-page | #EEF0F5 | 页面背景 |
+| divider | #DFE1E6 | 分割线 |
+| border-default | #ADB0B8 | 默认边框色 |
+| bg-hover | #F2F5FC | 悬浮背景 |
+| bg-component | #E9EDFA | 组件底色 |
+
+### 2.1.4 Auxiliary Colors | 辅助颜色
+| Token Name | Hex | Hex (Bordered) | Usage |
+|------------|-----|----------------|-------|
+| success | #3DCCA6 | bg:#E2F7F2 border:#3DCCA6 | 成功状态 |
+| warning | #FA9841 | bg:#FFF3E8 border:#FA9841 | 警告状态 |
+| danger | #F66F6A | bg:#FFEEED border:#F66F6A | 错误/危险状态 |
+| info | #5E7CE0 | bg:#E9EDFA border:#5E7CE0 | 提示/信息状态 |
+
+### 2.1.5 Text Colors | 文字颜色
+| Token Name | Hex | Usage |
+|------------|-----|-------|
+| text-primary | #252B3A | 主要文字 |
+| text-secondary | #575D6C | 次要文字 |
+| text-placeholder | #8A8E99 | 占位文字 |
+
+---
+
+## 2.2 Colors - Dark Mode | 深色模式颜色
+
+### 2.2.1 Primary Colors | 主要颜色
+| Token Name | Hex | Usage |
+|------------|-----|-------|
+| dark-brand-primary | #5E7DE0 | 主色_默认 |
+| dark-brand-primary-hover | #7693F5 | 主色_悬浮 |
+| dark-brand-primary-active | #526ECC | 主色_点击 |
+| dark-border-disabled-bg | #4A4A4A | 边框_禁用背景 |
+| dark-border-disabled-border | #949494 | 边框_禁用边框 |
+
+### 2.2.2 Secondary Colors | 次要颜色
+| Token Name | Hex | Usage |
+|------------|-----|-------|
+| dark-nav-bg | #222222 | 导航栏_背景 |
+| dark-nav-title-bar | #3F3F3F | 导航栏_标题栏 |
+| dark-nav-hover | #2D2D2D | 导航栏_悬浮 |
+| dark-global-notification | #3F3F3F | 全局通知 |
+
+### 2.2.3 Background & Border Colors | 背景色&边框色
+| Token Name | Hex | Usage |
+|------------|-----|-------|
+| dark-bg-disabled | #4A4A4A | 禁用背景 |
+| dark-bg-page | #121212 | 页面背景 |
+| dark-bg-content | #222222 | 内容区背景 |
+| dark-bg-card | #2D2D2D | 卡片背景 |
+| dark-bg-hover | #3F3F3F | 悬浮背景 |
+| dark-divider | #4A4A4A | 分割线 |
+| dark-border | #C1C1C1 | 边框 |
+
+### 2.2.4 Auxiliary Colors | 辅助颜色
+| Token Name | Hex | Usage |
+|------------|-----|-------|
+| dark-success | #50D4AB | 成功 |
+| dark-warning | #FA9841 | 警告 |
+| dark-warning-secondary | #FCC407 | 次警告 |
+| dark-danger | #F66F6A | 错误 |
+| dark-brand | #5E7DE0 | 品牌色 |
+
+### 2.2.5 Text Colors | 文字颜色
+| Token Name | Hex | Usage |
+|------------|-----|-------|
+| dark-text-primary | #F5F5F5 | 主要文字 |
+| dark-text-secondary | #C1C1C1 | 次要文字 |
+| dark-text-placeholder | #949494 | 占位文字 |
+| dark-text-disabled | #707070 | 禁用文字 |
+| dark-text-link | #7693F5 | 超链接文字 |
+
+### 2.2.6 Tag Colors (Dark) | 标签颜色
+| Token Name | Hex | Usage |
+|------------|-----|-------|
+| tag-story | #50D4AB | Story 标签 |
+| tag-bug | #FA9841 | Bug 标签 |
+| tag-task | #A6DD82 | Task 标签 |
+| tag-feature | #6CBFFF | Feature 标签 |
+| tag-epic | #7693F5 | Epic 标签 |
+
+---
+
+## 2.3 Extended Color Palette | 扩展色板
+
+### Indigo Blue / 靛蓝 (品牌色梯度)
+| Level | Hex | Description |
+|-------|-----|-------------|
+| 50 | #E9EDFA | 最浅，组件底色 |
+| 100 | #BECCFA | 浅色 |
+| 200 | #96ADFA | 中浅 |
+| 300 | #7693F5 | 悬浮态 |
+| 400 | #5E7CE0 | 品牌主色 (DEFAULT) |
+| 500 | #526ECC | 按下态 |
+| 600 | #465EB8 | 深色 |
+| 700 | #3C51A6 | 较深 |
+| 800 | #344899 | 深 |
+| 900 | #2A3C85 | 最深 |
+
+### Gray / 灰色 (中性色梯度)
+| Level | Hex | Description |
+|-------|-----|-------------|
+| 50 | #F2F5FC | 悬浮背景 |
+| 100 | #F5F5F6 | 禁用背景 |
+| 200 | #EEF0F5 | 页面背景 |
+| 300 | #DFE1E6 | 分割线 |
+| 400 | #ADB0B8 | 边框 |
+| 500 | #8A8E99 | 占位文字 |
+| 600 | #575D6C | 次要文字 |
+| 700 | #252B3A | 主要文字 |
+
+### Navigation Dark Colors | 导航深色
+| Level | Hex | Description |
+|-------|-----|-------------|
+| nav-1 | #5C6173 | 页面级标题栏 hover |
+| nav-2 | #464C59 | 顶部标题栏、菜单下拉框背景色 |
+| nav-3 | #282B33 | 顶部菜单 |
+
+---
+
+## 2.4 Typography | 排版
+
+### Font Family | 字体族
+```
+font-family: "Huawei Sans", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+```
+- macOS 中文: PingFang SC (第一) / Hiragino Sans GB (第二)
+- Windows 中文: Microsoft YaHei (第一) / Microsoft JhengHei (第二)
+- 英文: Huawei Sans (第一) / Arial (第二，降级)
+- 版权: 方正黑体/方正宋体/方正楷体为免费字体; 微软雅黑授权至 2027.10.31
+
+### Font Scale | 字号体系 (Regular / Bold)
+| Level | Size | Weight | Line Height | Usage |
+|-------|------|--------|-------------|-------|
+| body | 12px | regular/bold | 18px (1.5) | 正文 |
+| card-title | 14px | regular/bold | 20px (~1.43) | 卡片标题 |
+| page-title | 16px | regular/bold | 24px (1.5) | 页面标题 |
+| dialog-title | 20px | regular/bold | 30px (1.5) | 弹窗标题、数字 |
+| number | 24px | regular/bold | 36px (1.5) | 数字、面额 |
+| heading | 36px | regular/bold | 54px (1.5) | 文本标题 |
+
+### Text Colors per Level | 各层级可用文字颜色
+- 所有层级: #252B3A (主要), #575D6C (次要), #8A8E99 (占位)
+- 正文/卡片标题: 可额外使用 #F66F6A (红色标记), #526ECC (链接)
+
+---
+
+## 2.5 Spacing | 间距规则
+
+GRID_BASE: 4px
+PRINCIPLE: 亲密性 — 关联性越高，间距越近
+RECOMMENDED_VALUES: 4, 8, 12, 16, 20, 24, 32 (px)
+
+RULES:
+1. 同一逻辑组内元素间距使用较小值 (4-8px)
+2. 相关组间使用中等值 (12-16px)
+3. 不同区块间使用较大值 (20-32px)
+4. 始终保持 4 的倍数
+
+---
+
+## 2.6 Shadows | 阴影
+
+### Light Mode Shadows | 浅色模式阴影
+| Token Name | x | y | blur | spread | color | opacity | Usage |
+|------------|---|---|------|--------|-------|---------|-------|
+| shadow-card | 0 | 1 | 3 | - | #000000 | 10% | 卡片、警告提示 |
+| shadow-dropdown | 0 | 2 | 5 | - | #000000 | 20% | 下拉菜单 |
+| shadow-tooltip | 0 | 4 | 8 | - | #000000 | 20% | Tips 全局提示 |
+| shadow-button | 0 | 2 | 6 | 0 | #5E7CE0 | 40% | 按钮 |
+| shadow-card-hover | 0 | 2 | 8 | - | #5E7CE0 | 30% | 卡片组件/悬浮 |
+| shadow-popover | 0 | 0 | 6 | - | #000000 | 10% | 购买浮层 |
+| shadow-dialog | 0 | 10 | 40 | - | #000000 | 10% | 弹窗 |
+| shadow-drawer | 0 | 2 | 20 | - | #000000 | 50% | 抽屉 |
+| shadow-accordion | 0 | 2 | 4 | - | #02192A | 10% | 手风琴阴影 |
+
+### Corner Radius | 圆角
+| Token | Value | Usage |
+|-------|-------|-------|
+| radius-default | 4px | 大部分组件默认圆角 |
+| radius-small | 2px | 小型按钮、标签 |
+
+============================================================
+
+# 3. COMPONENT SPECIFICATIONS | 组件规范
+
+============================================================
+
+---
+## COMPONENT: 01 Typography 文字 (浅色模式)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: ebP1c
+NODE_NAME: 01Typography文字-浅色模式
+DIMENSIONS: 1920 × 3482
+
+SUB_NODES:
+  - 整站font-family (id: 6yzzi): 中文字体 + 英文字体说明，含字样展示
+  - 字号 (id: pWnRY): 字号表格，含 Regular 和 Bold 两套对照
+    - 6级字号: 12/14/16/20/24/36 px
+    - 每级包含：层级名称、字重(regular/bold)、字体大小、行高、颜色预览
+  - 版权规范 (id: gGSSZ): 字体版权说明
+
+PROPERTIES:
+  fill: "#FFFFFF"
+  fontFamily: "Amiri" (设计稿展示字体)
+  text-color: "#252B3A"
+
+---
+## COMPONENT: 02 Color 颜色 (浅色模式)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: xz3hM
+NODE_NAME: 02Color 颜色-浅色模式
+DIMENSIONS: 1920 × 2193
+
+SUB_NODES:
+  - 主要颜色 (id: W5edc): 主色_默认/悬浮/点击 + 禁用边框
+    PROPERTIES: { layout: "none", fill: "transparent" }
+  - 次要颜色 (id: vU9wk): 导航栏背景/标题栏/悬浮/白/全局通知
+  - 背景色&边框色 (id: CCMEB): 禁用背景/页面背景/分割线/边框/悬浮/组件底色
+  - 辅助颜色 (id: dcIrI): 成功/警告/错误/提示 + 带边框变体
+  - 文字颜色 (id: kP9n3): 主要/次要/占位
+
+---
+## COMPONENT: 02-2 Color 颜色 (深色模式)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: wk5vG
+NODE_NAME: 02-2Color 颜色-深色模式
+DIMENSIONS: 1920 × 2482
+
+SUB_NODES:
+  - 主要颜色: 主色系 #5E7DE0 / #7693F5 / #526ECC
+  - 次要颜色: 导航栏色系 #222222 / #3F3F3F / #2D2D2D
+  - 背景色&边框色: 页面 #121212, 内容 #222222, 卡片 #2D2D2D, 悬浮 #3F3F3F
+  - 辅助色: #50D4AB / #FA9841 / #FCC407 / #F66F6A / #5E7DE0
+  - 文字颜色: #F5F5F5 / #C1C1C1 / #949494 / #707070 / #7693F5
+  - 标签: Story#50D4AB / Bug#FA9841 / Task#A6DD82 / Feature#6CBFFF / Epic#7693F5
+
+PROPERTIES:
+  fill: "#000000"
+
+---
+## COMPONENT: 03 色板
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: zBmXV
+NODE_NAME: 03色板
+DIMENSIONS: 1920 × 2214
+
+SUB_NODES:
+  - Indigo Blue / 靛蓝: 10级梯度色板 (#E9EDFA → #2A3C85)
+  - Gray / 灰色: 多级灰色梯度
+  - 扩展色板: 附加色彩变量
+
+PROPERTIES:
+  fill: "#FFFFFF"
+
+---
+## COMPONENT: 04 间距规则
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: M2Zjs
+NODE_NAME: 04间距规则
+DIMENSIONS: 1920 × 1383
+
+SUB_NODES:
+  - 亲密性: 信息关联性与间距关系说明 + 示例
+  - 间距规则: 4的倍数原则，推荐值 4/8/12/16/20/24/32
+
+PROPERTIES:
+  fill: "#FFFFFF"
+
+---
+## COMPONENT: 05 描边&阴影
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: n6viT
+NODE_NAME: 05描边&阴影
+DIMENSIONS: 1920 × 1383
+
+SUB_NODES:
+  - 卡片、警告提示: x:0 y:1 blur:3 #000000/10%
+    NODE: O3l9x { cornerRadius: 4, shadow }
+  - 下拉菜单: x:0 y:2 blur:5 #000000/20%
+    NODE: kpLL7 { cornerRadius: 4, shadow }
+  - Tips全局提示: x:0 y:4 blur:8 #000000/20%
+    NODE: MH38e { cornerRadius: 4, fill: "#464D6E", shadow }
+  - Button: x:0 y:2 blur:6 #5E7CE0/40%
+    NODE: QIYHf { cornerRadius: 4, fill: "#5E7CE0", shadow }
+  - 卡片组件/悬浮: x:0 y:2 blur:8 #5E7CE0/30%
+    NODE: 4KGgg { cornerRadius: 4, border: "#5E7CE0/1px", shadow }
+  - 购买浮层: x:0 y:0 blur:6 #000000/10%
+    NODE: 1g3wv { cornerRadius: 4, shadow }
+  - 弹窗: x:0 y:10 blur:40 #000000/10%
+    NODE: rcd3j { cornerRadius: 4, shadow }
+  - 抽屉: x:0 y:2 blur:20 #000000/50%
+    NODE: lh9qA { shadow, spread: -10 }
+  - 手风琴阴影: x:0 y:2 blur:4 #02192A/10%
+    NODE: nZ2pR { cornerRadius: 4, shadow }
+
+---
+## COMPONENT: 06 导航
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: tpkWC
+NODE_NAME: 06导航
+DIMENSIONS: 2120 × 11054
+
+SUB_NODES:
+  ### 顶部导航 (Top Bar)
+  - top bar (id: J7Na7): 默认顶部导航栏 [40×1920]
+  - top bar备份 (id: o4ysM): 变体1 [40×1920]
+  - top bar备份 2 (id: BH50x): 变体2 [40×1920]
+
+  ### 手风琴侧栏 (Accordion Sidebar)
+  - 手风琴/基础样式/默认样式，点击可收起 (id: Ps2QO) [192×800]
+  - 手风琴/基础样式/屏显示滚动条 (id: QCfkD) [192×800]
+  - 手风琴/基础样式/选中二级菜单 (id: j4ck0) [192×800]
+  - 手风琴/拓展组件/分组悬浮时 (id: 9JZ2c) [192×800]
+  - 手风琴/拓展组件/不选中任一项 (id: CllET) [192×800]
+  - 手风琴/其他样式/英文场景 (id: v4v3Q) [192×800]
+  - 手风琴/其他样式/加红点 (id: sIT6c) [192×800]
+  - 手风琴/其他样式/返回旧版 (id: lhDI7) [192×800]
+
+  ### 定位导航 (Anchor Navigation)
+  - 纵向导航/定位导航/默认 (id: cRVFS) [78×318]
+  - 纵向导航/定位导航/悬浮 (id: oSQwD) [78×318]
+  - 纵向导航/定位导航/选中 (id: fG48n) [78×318]
+
+  ### 时间线 (Timeline)
+  - 纵向导航/时间线/默认 (id: eVALt) [178×176]
+  - 纵向导航/时间线/特殊状态 (id: QCuHK) [147×380]
+
+  ### 步骤日志 (Step Log)
+  - 纵向导航/步骤日志/开始 (id: ffs6y) [360×344]
+  - 纵向导航/步骤日志/全部完成 (id: xg6SC) [360×344]
+  - 纵向导航/步骤日志/debug (id: h0W0x) [360×344]
+  - 纵向导航/步骤日志/出现错误 (id: edVhN) [360×344]
+
+  ### 左侧边栏 (Left Sidebar)
+  - 导航/左侧边栏/默认 (id: 8C9TN) [40×912]
+  - 导航/左侧边栏/选中 (id: uWLqi) [40×912]
+  - 导航/左侧边栏/展开默认 (id: CdEfs) [200×912]
+  - 导航/左侧边栏/展开选中 (id: jNEj0) [200×912]
+
+  ### 标签页 (Tabs)
+  - tab/02 (id: 59j8x) [220×32]
+  - 页签/一级 (id: M3Y4D) [166×28]
+
+  ### 面包屑 (Breadcrumb)
+  - 面包屑/1 (id: wA1eN) [105×18]
+
+  ### 步骤条 (Steps)
+  - 步骤条 (id: 4TAVt) [500×58]
+
+  ### 分页 (Pagination)
+  - 分页/完整/默认-中文 (id: hy4or) [482×24]
+  - 分页/完整/悬浮 (id: paQ7A) [482×24]
+  - 分页/完整/按下 (id: qJ3FR) [482×24]
+  - 分页/完整/灰化 (id: 9yG6f) [482×24]
+  - 分页/精简/默认 (id: pDl8h) [204×24]
+  - 分页/精简/按下 (id: R3R14) [204×24]
+
+  ### 树 (Tree)
+  - 树/单选/初始悬浮和选中状态 (id: O0Iwe) [300×597]
+  - 树/多选/节点树初始状态备份 (id: uFPDX) [300×600]
+  - (含多种变体：可搜索、可拖拽等)
+
+  ### 云龙导航 (CloudDragon Navigation)
+  - 云龙导航/一级菜单展开 (id: q756r) [1920×48]
+  - 云龙导航/一级不带菜单 (id: KT74W) [1920×48]
+  - 云龙导航/二级 (id: TXxwm) [1920×40]
+
+---
+## COMPONENT: 07 按钮与链接
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: Ml7Ng
+NODE_NAME: 07按钮与链接
+DIMENSIONS: 1920 × 2214
+
+SUB_NODES:
+  ### 文本按钮 - 强调按钮 (Primary Button)
+  SIZE_VARIANTS: L (32px) / M (28px) / S (24px)
+  STATE_VARIANTS: Default / Hover / Active(Focus) / Disabled
+
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 按钮/主/L/默认 | dQo4K | 72×32 |
+  | 按钮/主/L/悬浮 | bJOBo | 72×32 |
+  | 按钮/主/L/按下 | S3exT | 72×32 |
+  | 按钮/主/L/禁用 | d1Sqi | 72×32 |
+  | 按钮/主/M/默认 | A8yYa | 64×28 |
+  | 按钮/主/M/悬浮 | LkWIo | 64×28 |
+  | 按钮/主/M/按下 | nITZq | 64×28 |
+  | 按钮/主/M/禁用 | RqSpv | 64×28 |
+  | 按钮/主/S/默认 | fg1KQ | 56×24 |
+  | 按钮/主/S/悬浮 | z1R5b | 56×24 |
+  | 按钮/主/S/按下 | snEx3 | 56×24 |
+  | 按钮/主/S/禁用 | 4LtVW | 56×24 |
+
+  ### 文本按钮 - 次要按钮 (Secondary Button)
+  SIZE_VARIANTS: L / M / S
+  STATE_VARIANTS: Default / Hover(Active/Focus) / Disabled
+
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 按钮/主/L/默认复制 | qVoo7 | 72×32 |
+  | 按钮/主/L/悬浮复制 | tO7hX | 72×32 |
+  | 按钮/主/L/禁用复制 | BPqKF | 72×32 |
+  | 按钮/主/M/默认复制 | FbW1D | 64×28 |
+  | 按钮/主/M/悬浮复制 | mqAWK | 64×28 |
+  | 按钮/主/M/禁用复制 | R1cDc | 64×28 |
+  | 按钮/主/S/默认复制 | EYG9p | 56×24 |
+  | 按钮/主/S/悬浮复制 | atT59 | 56×24 |
+  | 按钮/主/S/禁用复制 | 3DVvs | 56×24 |
+
+  ### 不带边框的文本按钮 (Text Button)
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 按钮/文本/默认 | PuHuY | 48×18 |
+  | 按钮/文本/悬浮-按下-焦点 | Eg3AT | 48×18 |
+  | 按钮/文本/禁用 | mHjZL | 48×18 |
+
+  ### 图标按钮 (Icon Button)
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 按钮/图标按钮/默认 | ZLpVX | 28×28 |
+  | 按钮/图标按钮/悬浮-按下-焦点 | maNAE | 28×28 |
+  | 按钮/图标按钮/禁用 | aaGPo | 28×28 |
+
+  ### 文本+图标按钮 - 带边框 (Bordered Text+Icon Button)
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 按钮/带边框文本+图标/默认 | jdW6j | 97×28 |
+  | 按钮/带边框文本+图标/悬浮-按下-焦点 | kUqwg | 97×28 |
+  | 按钮/带边框文本+图标/禁用 | Ni4hC | 97×28 |
+
+  ### 文本+图标按钮 - 不带边框 (Borderless Text+Icon Button)
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 按钮/不带边框文本+图标/默认 | Y3L9X | 84×18 |
+  | 按钮/不带边框文本+图标/悬浮-按下-焦点 | LXJqh | 84×18 |
+  | 按钮/不带边框文本+图标/禁用 | 19Mbn | 84×18 |
+
+  ### 下拉按钮 - 带图标 (Dropdown with Icon)
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 按钮/带图标下拉/默认 | WZNFE | 120×28 |
+  | 按钮/带图标下拉/悬浮 | U9Oee | 120×28 |
+  | 按钮/带图标下拉/禁用 | 0sH3i | 120×28 |
+
+  ### 下拉按钮 - 不带图标 (Dropdown without Icon)
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 按钮/不带图标下拉/默认 | OutMn | 76×28 |
+  | 按钮/不带图标下拉/悬浮 | RfQEu | 76×28 |
+  | 按钮/不带图标下拉/禁用 | SK3EH | 76×28 |
+
+  ### 链接 (Links)
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 按钮/文字导航链接/富文本默认 (常规型) | cROsx | 48×18 |
+  | 按钮/文字导航链接/富文本悬浮 (常规型) | TqoNO | 48×18 |
+  | 按钮/文字导航链接/默认 (强调型) | yp5EU | 48×18 |
+  | 按钮/文字导航链接/悬浮 (强调型) | 4wp6O | 48×18 |
+
+---
+## COMPONENT: 08 滑块
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: 1PCFI
+NODE_NAME: 08滑块
+DIMENSIONS: 1920 × 986
+
+SUB_NODES:
+  ### 基本滑块
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 滑块/基本/默认 | GYMxE | 1000×28 |
+  | 滑块/基本/悬浮 | S1cOz | 1000×28 |
+  | 滑块/双向绑定 | hpLwZ | 1050×28 |
+  | 滑块/基本/禁止 | cUe2v | 1000×28 |
+
+  ### 放大缩小
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 滑块/放大缩小/默认 | jnHOJ | 195×28 |
+  | 滑块/放大缩小/悬浮 | Jpml0 | 222×28 |
+
+---
+## COMPONENT: 09 卡片
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: UElRD
+NODE_NAME: 09卡片
+DIMENSIONS: 1920 × 986
+
+SUB_NODES:
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 卡片/大标题 | SobM3 | 400×82 |
+  | 卡片/小标题 | sRrFd | 400×82 |
+  | 卡片/操作模板/默认 | VkkjX | 422×82 |
+  | 卡片/操作模板/选中 | s2Bwk | 422×82 |
+  | 卡片/工作项/默认背景 | BKgC5 | 270×84 |
+  | 卡片/工作项/悬停背景 | lg1GO | 270×84 |
+  | 卡片/工作项/默认样式 | BwSQs | 270×88 |
+  | 卡片/按钮 样式卡片 | cte52 | 200×70 |
+  | 卡片/按钮 样式卡片悬浮 | 3Ohn5 | 200×70 |
+  | 卡片/按钮 样式卡片选中 | lW41o | 200×70 |
+
+---
+## COMPONENT: 10 提示类
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: D8idg
+NODE_NAME: 10提示类
+DIMENSIONS: 2200 × 1399
+
+SUB_NODES:
+  ### 基础样式
+  - 提示类/基础样式 (id: zWs7A) [144×35]
+
+  ### 错误通知
+  - 提示类/错误通知 (id: 5s18e) [146×31]
+
+  ### 全局通知 (4种状态)
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 提示类/全局通知/成功 | 5Ybq9 | 210×38 |
+  | 提示类/全局通知/错误 | UtbT3 | 210×38 |
+  | 提示类/全局通知/告警 | i0ekE | 210×38 |
+  | 提示类/全局通知/提示 | oTTCA | 210×38 |
+
+  ### 通知 (4种状态)
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 提示类/通知/成功 | iUh9e | 300×34 |
+  | 提示类/通知/错误 | 7McD3 | 300×34 |
+  | 提示类/通知/告警 | BfGrp | 300×34 |
+  | 提示类/通知/提示 | B122x | 300×34 |
+
+  ### Banner 通知 (4种状态)
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 提示类/banner通知/成功 | iC3Xs | 520×42 |
+  | 提示类/banner通知/错误 | F24Ow | 520×42 |
+  | 提示类/banner通知/告警 | Gy3pd | 520×42 |
+  | 提示类/banner通知/提示 | t04hJ | 520×42 |
+
+  ### 导航栏通知
+  - 提示类/导航栏通知 (id: A0Gn3) [1920×40]
+
+  ### 文字提示
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 提示类/文字提示/单行 | vimvd | 149×28 |
+  | 提示类/文字提示/多行 | 6JBR0 | 200×46 |
+
+  ### 消息提醒
+  - 提醒/一点 (Badge dot)
+  - tag/number (id: nARyt) [6×6]
+  - 提示类/提醒 (id: a18Ge) [14×14]
+
+---
+## COMPONENT: 11 抽屉
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: 1XFc1
+NODE_NAME: 11抽屉
+DIMENSIONS: 2200 × 1399
+PROPERTIES: { fill: "#ADB0B8" }
+
+---
+## COMPONENT: 12 输入类
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: sKDbg
+NODE_NAME: 12输入类
+DIMENSIONS: 1920 × 4906
+
+SUB_NODES:
+  ### 单行文本框
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 输入类/文本框/单行文本框默认 | ItmJi | 200×28 |
+  | 输入类/文本框/单行文本框/悬浮 | SZw8y | 200×28 |
+  | 输入类/文本框/单行文本框/焦点 | 7LX7t | 200×28 |
+  | 输入类/文本框/单行文本框/输入 | t0K92 | 200×28 |
+  | 输入类/文本框/单行文本框/禁用 | Jhuey | 200×28 |
+  | 输入类/文本框/单行文本框/校验错误 | OVvLW | 200×60 |
+  | 输入类/文本框/单行文本框/完成 | KaJrS | 200×28 |
+
+  ### 多行文本框
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 输入类/文本框/多行文本框/默认 | mB80m | 200×100 |
+  | 输入类/文本框/多行文本框/焦点 | 5G7j6 | 200×100 |
+  | 输入类/文本框/多行文本框/输入 | ANWh7 | 200×100 |
+  | 输入类/文本框/多行文本框/禁用 | A9l23 | 200×100 |
+  | 输入类/文本框/多行文本框/校验错误 | IgR3D | 200×100 |
+
+  ### 自动补齐输入框
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 输入类/带自动补齐输入框/默认 | ADF9r | 400×28 |
+  | 输入类/带自动补齐输入框/悬浮 | eovu5 | 400×28 |
+  | 输入类/带自动补齐输入框/焦点（通用） | 2iGHe | 400×250 |
+  | 输入类/带自动补齐输入框/焦点-带图标 | cU2Xg | 400×250 |
+  | 输入类/带自动补齐输入框/下拉悬浮（通用） | iHr4N | 400×250 |
+  | 输入类/带自动补齐输入框/选中（通用） | hJYCM | 400×250 |
+
+  ### 带标签输入 (Tag Input)
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 输入类/带标签/标签悬浮 | jDCIu | 400×28 |
+  | 输入类/带标签/标签选中 | vZsPF | 400×28 |
+  | 输入类/带标签/单个禁用 | YUKM3 | 400×28 |
+  | 输入类/带标签/整体禁用 | acAKm | 400×28 |
+  | 输入类/带标签/折行 | 3PauI | 400×52 |
+  | 输入类/带标签/超过两行 | ogs7Z | 400×52 |
+
+  ### 数字输入框
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 输入类/数字输入框/默认 | C9rTx | 63×28 |
+  | 输入类/数字输入框/悬浮 | iPATJ | 63×28 |
+  | 输入类/数字输入框/输入 | VHf5x | 63×28 |
+  | 输入类/数字输入框/禁用 | 5n5kA | 63×28 |
+  | 输入类/数字输入框/错误 | 7S73H | 229×28 |
+
+  ### 微调器 (Spinner)
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 输入类/微调器/默认 | iA4bC | 90×28 |
+  | 输入类/微调器/悬浮 | JOC1S | 90×28 |
+  | 输入类/微调器/按下 | UD2bE | 90×28 |
+  | 输入类/微调器/固定数字 | CYLnY | 90×28 |
+  | 输入类/微调器/错误 | Lg2FQ | 219×28 |
+
+  ### 搜索框 - 常规样式
+  STYLES: 无底无框 / 线框 / 纯底色 / 有框无底
+  STATES: 默认 / 悬浮 / 焦点 / 输入 / 禁用 / 完成 [200×28]
+
+  ### 搜索框 - 综合搜索
+  - 输入类/搜索/综合搜索/默认 (id: hFQo7) [300×28]
+  - 输入类/搜索/综合搜索/搜索框悬浮 (id: 0I8B1) [300×28]
+  - 输入类/搜索/综合搜索/选项下拉 (id: VWQEr) [300×28]
+
+---
+## COMPONENT: 13 选择类
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: kRwQQ
+NODE_NAME: 13选择类
+DIMENSIONS: 1919 × 5818
+
+SUB_NODES:
+  ### 下拉框 (Select/Dropdown)
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 选择类/下拉框/默认 | PghtN | 200×28 |
+  | 选择类/下拉框/悬浮 | hvqCg | 200×28 |
+  | 选择类/下拉框/展开 | DwCH6 | 200×190 |
+  | 选择类/下拉框/下拉无选项 | 8qjl3 | 200×70 |
+  | 选择类/下拉框/禁用 | 2BaDw | 200×28 |
+  | 选择类/下拉框/下拉选项过长 | 6B0Mj | 300×190 |
+  | 选择类/下拉框/可删除已选样式 | zaXrY | 200×28 |
+  | 选择类/下拉框/展开可删除已选样式 | x7j5K | 200×95 |
+  | 选择类/下拉框/展开带最近选择 | D71yO | 177×190 |
+  | 选择类/下拉框/展开带搜索 | rjcNC | 200×260 |
+
+  ### 无框下拉 (Borderless Dropdown)
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 选择类/无框下拉/默认 | t3YzH | 82×28 |
+  | 选择类/无框下拉/展开 | 0yNKJ | 82×28 |
+  | 选择类/无框下拉/带icon | rbd2J | 106×28 |
+
+  ### 下拉复选框 (Multi-select Dropdown)
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 选择类/下拉复选框/默认 | WnGYs | 232×28 |
+  | 选择类/下拉复选框/悬浮 | AHZPT | 232×28 |
+  | 选择类/下拉复选框/基础 | HuWpd | 232×190 |
+  | 选择类/下拉复选框/多个标签折行 | zNOci | 232×214 |
+  | 选择类/下拉复选框/超过两行 | Eat3T | 240×214 |
+  | 选择类/下拉复选框/标签悬浮 | yWvyy | 232×190 |
+  | 选择类/下拉复选框/选项禁用 | q64nH | 232×190 |
+  | 选择类/下拉复选框/单个禁用 | F7Qns | 232×28 |
+  | 选择类/下拉复选框/整体禁用 | BjFqb | 232×28 |
+
+  ### 单选控制器 (Radio)
+  SIZE: 16×16
+  STATES: 默认未选中 / 悬浮未选中 / 禁用未选中 / 错误未选中 / 默认和悬浮选中 / 禁用选中
+
+  ### 单选块 (Radio Block)
+  - 大尺寸/固定宽度组合 (id: Mh1tx) [508×28]
+  - 大尺寸/固定宽度折行 (id: 5AC3T) [508×60]
+  - 大尺寸/不固定宽度 (id: Gy2pj) [405×28]
+  - 小尺寸/固定宽度 (id: a2Ocj) [508×20]
+  - 小尺寸/不固定宽度 (id: 9f8YC) [405×20]
+  - 大尺寸/无边框 (id: DgHEP) [397×28]
+  - 小尺寸/无边框 (id: U3umX) [397×20]
+
+  ### 多块选择 (Checkbox Block)
+  - 多块/不定宽度/组合 (id: h4Onv) [624×64]
+  - 多块/固定宽度/组合 (id: tV4zz) [468×28]
+
+  ### 树选择
+  - 选择类/树/多选/下拉展开 (id: cD7uQ) [232×376]
+  - 选择类/树/单选展开 (id: 0LE1m) [232×376]
+
+  ### 双向选择 (Transfer)
+  - 选择类/树/双向选择/默认可选 (id: r0PKa) [340×398]
+  - 选择类/树/双向选择/已选项空 (id: inbOR) [340×398]
+  - 选择类/树/双向选择/已选后可选项 (id: BOLYL) [340×398]
+  - 选择类/树/双向选择/已选后已选项 (id: dXkLh) [340×398]
+
+---
+## COMPONENT: 14 表单
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: 63JX0
+NODE_NAME: 14表单
+DIMENSIONS: 1920 × 3440
+
+SUB_NODES:
+  ### 表单元素
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 表单/选择 | nkTEu | 200×50 |
+  | 表单/输入 | 5FAv5 | 200×50 |
+  | 表单/标签 | X1hNe | 200×50 |
+  | 表单/错误 | DRXVB | 200×76 |
+  | 表单/多行内容 | Liy7p | 200×122 |
+  | 表单/单选 | 4iDw9 | 134×50 |
+
+  ### 字段编辑 - 单项编辑
+  STATES: 默认 / 悬浮
+  - 编组 2 (id: l3W4z) [500×360] 默认态
+  - 编组 7 (id: 7GNV1) [500×360] 悬浮态
+
+  ### 字段编辑 - 行内编辑
+  - 编组 3 (id: 7VZym) [501×360]
+
+  ### 字段编辑 - 弹窗编辑
+  - 编组 2备份 (id: dqtY7) [500×360]
+
+  ### 多项编辑 - 弹窗编辑
+  - 创建监控站点 表单 (id: y3x1G) [1082×666]
+
+  ### 及时生效编辑
+  STATES: 默认 / 激活 / 悬浮
+  - 默认: 可输入项 + 下拉选择 (id: PhQaK) [500×120]
+  - 激活: 输入框/下拉展开 (id: vXK4V) [500×120]
+
+---
+## COMPONENT: 15 日期
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: G5qzq
+NODE_NAME: 15日期
+DIMENSIONS: 1920 × 600
+
+SUB_NODES:
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 日期/年月选择 | 1jd9d | 122×220 |
+  | 日期/日期选择 | 6OSkG | 252×272 |
+  | 日期/日期区间选择 | eyCnn | 520×272 |
+
+---
+## COMPONENT: 16 弹窗
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: CjvtK
+NODE_NAME: 16弹窗
+DIMENSIONS: 1920 × 2060
+
+SUB_NODES:
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 弹窗/popup/960 | 7lIky | 960×344 |
+  | 弹窗/popup/800 | kBLwP | 800×344 |
+  | 弹窗/popup/600 | KXQVF | 600×224 |
+  | 弹窗/popup/400 | RecdT | 400×224 |
+  | 弹窗/popup/带图标 | SRlFB | 400×164 |
+  | 弹窗/popup/不带操作 | bItth | 400×212 |
+
+---
+## COMPONENT: 17 折叠面板
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: lgUcd
+NODE_NAME: 17折叠面板
+DIMENSIONS: 1920 × 2060
+
+SUB_NODES:
+  ### 有图标 (收起展开图标放右)
+  STATES: 信息 / 通知 / 成功 / 错误 / 告警
+
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 折叠面板/有图标/错误备份 (信息) | BBNX3 | 1480×127 |
+  | 折叠面板/有图标/错误备份 2 (通知) | P7kYz | 1480×127 |
+  | 折叠面板/有图标/错误备份 3 (成功) | 4xS0g | 1480×127 |
+  | 折叠面板/有图标/错误 (错误) | 1TfnU | 1480×127 |
+  | 折叠面板/有图标/错误备份 4 (告警) | eVPsy | 1480×127 |
+
+  ### 无图标 (收起展开图标放左)
+  STATES: 信息 / 通知 / 成功 / 错误 / 告警
+
+  | Variant | Node ID | Size |
+  |---------|---------|------|
+  | 折叠面板/无图标/信息 | uY10g | 1480×127 |
+  | 折叠面板/无图标/信息备份 (通知) | FSWWQ | 1480×127 |
+  | 折叠面板/无图标/信息备份 2 (成功) | XgD1b | 1480×127 |
+  | 折叠面板/无图标/信息备份 3 (错误) | QU2qN | 1480×127 |
+  | 折叠面板/无图标/信息备份 4 (告警) | 5gYkG | 1480×127 |
+
+---
+## COMPONENT: 18 上传
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: xYV2b
+NODE_NAME: 18上传
+DIMENSIONS: 1920 × 1435
+
+SUB_NODES:
+  - 上传按钮: 默认状态按钮上传交互
+  - 图片上传: 图片文件上传区域
+  - 拖拽上传: 拖拽文件上传区域
+
+---
+## COMPONENT: 19 色卡/标签
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: t2Jqi
+NODE_NAME: 19色卡，标签
+DIMENSIONS: 1920 × 3133
+
+---
+## COMPONENT: 20 图表
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: d1f7k
+NODE_NAME: 20图表
+DIMENSIONS: 1920 × 13165
+
+---
+## COMPONENT: 21 表格
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: aoq8B
+NODE_NAME: 21表格
+DIMENSIONS: 2200 × 4669
+
+---
+## COMPONENT: 22 新手指引
+PEN_PATH: designsystem/devUI/components/devUI.pen
+NODE_ID: hmY2f
+NODE_NAME: 22新手指引
+DIMENSIONS: 2200 × 5416
+
+SUB_NODES:
+  - 01.常用于流程指引-适用新手用户
+  - 02.4大类常用流程
+
+============================================================
+
+# 4. TRANSFORMATION RULES | 转换规则
+
+============================================================
+
+## 4.1 Layout Translation | 布局转换
+| Pencil Property | CSS/Code Strategy | Notes |
+|-----------------|-------------------|-------|
+| layout: "horizontal" | display: flex; flex-direction: row | 水平排列 |
+| layout: "vertical" | display: flex; flex-direction: column | 垂直排列 |
+| layout: "none" | position: relative/absolute | 自由定位 |
+| gap | gap (flex-gap) | 子元素间距 |
+| padding | padding | 内边距 |
+| clip: true | overflow: hidden | 裁切溢出 |
+
+## 4.2 Property Mapping | 属性映射
+| Pencil Property | CSS Property | Token Strategy |
+|-----------------|-------------|----------------|
+| fill (hex) | background-color | 反查 Design Token 名 |
+| fill (image) | background-image | url() |
+| cornerRadius | border-radius | radius-default: 4px |
+| stroke.fill | border-color | 对应 Token |
+| stroke.thickness | border-width | px |
+| stroke.align: "inside" | box-sizing: border-box | 内描边 |
+| effect.type: "shadow" | box-shadow | x y blur spread color |
+| opacity | opacity | 0-1 |
+| fontFamily | font-family | 按字体族映射 |
+| fontSize | font-size | px |
+| fontWeight | font-weight | normal/bold |
+| lineHeight | line-height | 倍数或 px |
+
+## 4.3 Component Instance Mapping | 组件实例映射
+| Pencil Property | Code Strategy | Notes |
+|-----------------|---------------|-------|
+| reusable: true | 组件定义 (Component) | 视为可复用组件 |
+| type: "ref" | 组件实例 (<Component />) | 引用组件 |
+| enabled: false | 条件渲染 (v-if/ng-if) | 隐藏节点=可配置项 |
+
+## 4.4 State Mapping | 状态映射
+
+### Button States
+| Design State (CN) | CSS Pseudo / Prop | Framework Prop |
+|-------------------|-------------------|----------------|
+| 默认 | :default | default |
+| 悬浮 | :hover | - |
+| 按下 | :active | - |
+| 焦点 | :focus / :focus-visible | - |
+| 禁用 | :disabled / [disabled] | disabled=true |
+
+### Size Variants
+| Design Size | Height | Framework Prop |
+|-------------|--------|----------------|
+| L | 32px | size="lg" |
+| M | 28px | size="md" |
+| S | 24px | size="sm" |
+
+## 4.5 Naming Convention Mapping | 命名映射
+| .pen Name Pattern | Framework Prop |
+|-------------------|----------------|
+| 按钮/主/L/默认 | <d-button type="primary" size="lg"> |
+| 按钮/主/M/悬浮 | <d-button type="primary" size="md"> :hover |
+| 提示类/全局通知/成功 | <d-alert type="success"> |
+| 提示类/通知/错误 | <d-notification type="error"> |
+| 选择类/下拉框/展开 | <d-select> :open |
+| 输入类/文本框/单行文本框/焦点 | <d-input> :focus |
+| 弹窗/popup/960 | <d-modal width="960"> |
+| 折叠面板/有图标/错误 | <d-accordion icon status="error"> |
+
+============================================================
+
+# 5. FORBIDDEN PATTERNS | 禁用模式
+
+============================================================
+
+1. NO hardcoded absolute x/y positioning when parent uses Auto Layout
+   禁止在自动布局容器中使用绝对定位
+2. NO raw hex values in code — always reference Design Tokens
+   禁止在代码中使用裸色值，必须引用设计令牌
+3. NO direct manipulation of Node IDs — use semantic component names
+   禁止直接操作节点 ID，使用语义化组件名称
+4. NO inconsistent shadow values — always use defined shadow tokens
+   禁止使用未定义的阴影值
+5. NO font sizes outside the defined scale (12/14/16/20/24/36)
+   禁止使用未定义的字号
+6. NO spacing values outside the 4px grid system
+   禁止使用非 4px 倍数的间距值
+7. NO mixing light/dark mode tokens in the same theme context
+   禁止在同一主题上下文中混用浅色/深色模式令牌
+
+============================================================
+
+# 6. THEME SWITCHING GUIDE | 主题切换指南
+
+============================================================
+
+DevUI supports Light/Dark mode. Key token mappings:
+
+| Light Token | Light Value | Dark Token | Dark Value |
+|-------------|-------------|------------|------------|
+| brand-primary | #5E7CE0 | dark-brand-primary | #5E7DE0 |
+| text-primary | #252B3A | dark-text-primary | #F5F5F5 |
+| text-secondary | #575D6C | dark-text-secondary | #C1C1C1 |
+| bg-page | #EEF0F5 | dark-bg-page | #121212 |
+| bg-hover | #F2F5FC | dark-bg-hover | #3F3F3F |
+| divider | #DFE1E6 | dark-divider | #4A4A4A |
+| border-default | #ADB0B8 | dark-border | #C1C1C1 |
+| success | #3DCCA6 | dark-success | #50D4AB |
+| warning | #FA9841 | dark-warning | #FA9841 |
+| danger | #F66F6A | dark-danger | #F66F6A |
+
+============================================================
+
+End of llms-full.txt - DevUI Pencil Design System
+============================================================

@@ -1,0 +1,17 @@
+{
+  "version": "2.6",
+  "children": [
+    {
+      "type": "frame",
+      "id": "gjYAa",
+      "x": -502,
+      "y": 133,
+      "name": "Frame 1",
+      "clip": true,
+      "width": 712,
+      "height": 416,
+      "fill": "#FFFFFF",
+      "layout": "none"
+    }
+  ]
+}
