@@ -21,4 +21,4 @@ node_modules/
 
 # Large binary / cache (optional)
 # *.log
-# .cursor/
+.cursor/
