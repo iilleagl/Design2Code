@@ -1,149 +1,244 @@
 ============================================================
-llms.txt - DevUI Pencil Design System
+llms.txt - DevUI Pencil Design System Component Directory
 ============================================================
 
 # DevUI Design System | DevUI 设计系统
-
-> DevUI 是华为云开源的企业级 UI 组件库，孵化自华为云 DevCloud 研发工具体系。
-> 设计理念：沉浸 (Immersive) · 灵活 (Flexible) · 至简 (Simplistic)
-> 参考文档: https://devui.design/design-cn/start
-
-## SOURCE FILE | 源文件
-
-- FORMAT: Pencil .pen (Design-as-Code)
-- PATH: designsystem/devUI/components/devUI.pen
-- SYNC_TARGET: Angular / Vue / React (DevUI Component Library)
-- LAYOUT_ENGINE: Pencil Auto Layout (Flex-compatible)
+> Source: https://devui.design
+> Format: Pencil .pen (Design-as-Code)
+> Component Library: designsystem/devUI/components/devUI.pen
+> Total Reusable Components: 706 variants across 60+ component groups
 
 ---
 
-## COMPONENT DIRECTORY | 组件目录
+# COMPONENT DIRECTORY | 组件目录
 
-### Navigation / 导航类 (7)
+## 1. 按钮 (Button)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+DESCRIPTION: 企业级按钮组件，支持主要/次要/图标文本/可下拉组合等类型
+VARIANTS:
+  - 按钮-主要 (12 variants): Size=[sm,md,lg] × Status=[default,hover,active,disabled]
+  - 按钮-次要 (12 variants): Size=[sm,md,lg] × Status=[default,hover,active,disabled]
+  - 按钮-图标文本按钮 (8 variants): Size=[sm,md] × Status=[default,hover,active,disabled]
+  - 按钮-可下拉次要组合按钮 (24 variants): status × icon/number × 尺寸
 
-| # | Name | Node ID | Type | Description |
-|---|------|---------|------|-------------|
-| 01 | 页签 Tabs | DUS2U | frame | 页签 Pills / Wrapped / Icon 页签，含 default/hover/active/disabled 状态 |
-| 02 | 面包屑 BreadCrumbs | BNX1S | frame | 分隔符、基础面包屑组件、面包屑组 |
-| 03 | 分页器 Pagination | ag313 | frame | 页码组件、分页 Pagination |
-| 04 | 顶部导航 | xGbvq | frame | 顶部导航栏、菜单按钮、头像信息、定位 |
-| 05 | 侧边导航-手风琴 | 0CMMP | frame | 一级/二级菜单、展开/收起、侧边栏 |
-| 06 | 侧边栏-工具链专用导航 | m9gHo | frame | 二级菜单展开/收起、项目选项、下拉面板 |
-| 07 | 头信息 | Rqi61 | frame | 头信息标题面包屑、代码健康度检查、代码仓选项 |
+## 2. 分页 (Pagination)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+DESCRIPTION: 分页导航组件，支持页码跳转
+VARIANTS:
+  - .页码 (8 variants): statuse=[default,hover,active,disabled] × type=[number,ellipsis]
+  - 分页 Pagination (2 variants): 跳转=[true,false]
 
-### Form / 表单输入类 (6)
+## 3. 标签 (Tag)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+DESCRIPTION: 标签组件，支持多种样式和颜色
+VARIANTS:
+  - 标签 (4 variants): Size=[md,lg] × Color=[green,orange]
+  - 辅助标签 (4 variants): Size=[md,lg] × Color=[green,grey]
+  - 常规标签 (2 variants): Size=[md,lg]
+  - 线性标签 (6 variants): Size=[md,lg] × Color=[green,orange,red]
 
-| # | Name | Node ID | Type | Description |
-|---|------|---------|------|-------------|
-| 08 | 按钮 Button | FfKhm | frame | 主要/次要/图标文本/下拉组合按钮 × lg/md/sm × default/hover/active/disabled |
-| 09 | 输入框 TextInput | UaxE1 | frame | 文本输入框、数字输入框、表单标题、表单项 |
-| 10 | 选择框 Select | sfJNO | frame | 下拉选择框(单选/多选)、下拉选项、选择面板、内容下展 |
-| 11 | 复选框 Checkbox | 2b27B | frame | 复选框、复选框文本组合 |
-| 12 | 搜索框 Search | UWJE6 | frame | 搜索框-线框白底风格 |
-| 13 | 分类搜索 CategorySearch | 0bDep | frame | 分类搜索组件 |
+## 4. 面包屑 (BreadCrumbs)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+DESCRIPTION: 面包屑导航组件
+VARIANTS:
+  - .分隔符 (2 variants): separatorIcon=[default,next]
+  - .基础面包屑组件 (4 variants): Status=[default,hover,active,ellipsis]
+  - 面包屑组 (6 variants): number=[2,3,4,5,6,ellipsis]
 
-### Data Display / 数据展示类 (5)
+## 5. 页签 (Tabs)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+DESCRIPTION: 多种风格页签组件（Pills/Wrapped/Icon/图标页签）
+VARIANTS:
+  - 页签 Pills 选项状态 (4 variants): status=[default,hover,disabled,active]
+  - 页签 Wrapped 选项状态 (4 variants): status=[default,默认状态,悬浮状态,禁用状态]
+  - 页签Pills组 (5 variants): number=[2,3,4,5,6]
+  - 页签Tabs组 (5 variants): number=[2,3,4,5,6]
+  - 页签 Wrapped组 (5 variants): number=[2,3,4,5,6]
+  - . 页签 Icon-主组件 (12 variants): Status × Icon
+  - 页签 Icon (2 variants): number=[2,3]
+  - . 页签-图标-主组件 (4 variants): Status=[active,hover,default,disabled]
+  - 页签-图标页签 (5 variants): number=[2,3,4,5,6]
 
-| # | Name | Node ID | Type | Description |
-|---|------|---------|------|-------------|
-| 14 | 表格 DataTable | 7l0Mm | frame | 表头/表体单项(默认类/合并单元格)、操作列、树结构、优先级图标 |
-| 15 | 卡片 | cFUjw | frame | 基本卡片、带图卡片、项目卡片、有图标/无图标标题、信息展示、计数徽章 |
-| 16 | 标签 Tag | WnKo0 | frame | 标签、辅助标签、常规标签、线性标签 |
-| 17 | 筛选 Filter | UsEWV | frame | 筛选选项单项、筛选选择面板、筛选组件 |
-| 18 | 表单 form | Qyuse | frame | 表单组件(输入/选择/标签/错误/多行组合) |
+## 6. 卡片 (Card)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+DESCRIPTION: 卡片组件，含基本卡片、带图卡片、项目卡片
+VARIANTS:
+  - 基本卡片 (3 variants): 状态=[默认,悬浮,悬浮-标题变蓝]
+  - 带图卡片 (3 variants): 状态=[默认,悬浮,悬浮-标题变蓝]
+  - 项目卡片 (3 variants): 状态=[默认,悬浮,悬浮-标题变蓝]
+  - .有图标标题 (5 variants): 标题图标 × 右侧图标 × 尺寸
+  - .无图标标题 (2 variants): 副标题=[on,off]
+  - .信息展示 (4 variants): 图标=[on,off] × 尺寸=[md,lg]
+  - .操作图标 (3 variants): 名称=[最近访问,设置,我创建的]
 
-### Business / 业务组件 (4)
+## 7. 选择框 (Select)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+DESCRIPTION: 下拉选择框组件，支持单选/多选
+VARIANTS:
+  - 下拉选择框 (10 variants): status × 选择状态 × 下拉面板
+  - 下拉选择框-多选 (2 variants): [active,Default]
+  - 下拉选项 (12 variants): status × 组件类型=[多选,单选,分组标题,分割线]
+  - 内容下展 (16 variants): status × 组件类型 × icon
+  - 表单项-下拉选择框 (5 variants): status=[noContent,disabled,hasContent,...]
 
-| # | Name | Node ID | Type | Description |
-|---|------|---------|------|-------------|
-| 19 | 业务组件（更多卡片） | D0C5W | frame | 左侧选择卡片、banner卡片、公告卡片、活动卡片、帮助文档卡片 |
-| 20 | 工程首字母图标 | SYWnk | frame | 0-9 / A-Z 字母图标 (40×40) |
-| 21 | 工程首字母图标-32 | HEF9Q | frame | 字母图标 (32×32) |
-| 22 | 数字首字母图标 | QEl7l | frame | 0-9 / A-Z 字母图标 (48×48) |
+## 8. 表格 (DataTable)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+DESCRIPTION: 数据表格组件，支持默认类和合并单元格
+VARIANTS:
+  - 默认类/表头单项 (varies): header-bg × position × contentType
+  - 默认类/表体单项 (varies): position × contentType × status
+  - 合并单元格/表头单项 (varies)
+  - 合并单元格/表体单项 (103 variants): position × contentType × status
+  - 表格 (4 variants): contentType × shadowType
+  - .表体组件/树结构 (varies): 层级 × 状态
+  - .表体组件/状态图标 (varies)
+  - .操作列 (3 variants): number=[1,2,3]
 
-### Icons / 图标类 (4)
+## 9. 搜索框 (Search)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+DESCRIPTION: 搜索输入框组件
+VARIANTS:
+  - 搜索框-线框白底风格 (14 variants): iconPosition=[left,right] × Status=[default-noContent,disabled,disabled-entered,default-contentpresent,hover,activation-inputPending,activation-Entered]
+  - 分类搜索 (8 variants): status × tag
 
-| # | Name | Node ID | Type | Description |
-|---|------|---------|------|-------------|
-| 23 | 操作图标 | QY5Bx | frame | 43个操作图标：新增/帮助/下拉/搜索/设置/关闭/保存/拖拽/过滤/排序等 |
-| 24 | 2D图标 | c3mAv | frame | 16个产品功能图标(服务树/部署/测试/流水线等) |
-| 25 | 2.5D图标 | voXJB | frame | 13个产品功能立体图标 |
-| 26 | 侧边工具栏质感图标 | iIj5S | frame | 8个工具栏质感图标(持续交付/仪表盘/代码管理等) |
+## 10. 复选框 (Checkbox)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+DESCRIPTION: 复选框组件
+VARIANTS:
+  - 复选框 (9 variants): status=[noChecked,checked,halfChecked] × componentStatus=[default,hover,disabled]
+  - 复选框文本组合 (9 variants): Status=[noChecked,checked,halfChecked] × componentStatus=[default,hover,disabled]
 
-### Page Templates / 页面模板 (2)
+## 11. 输入框 (TextInput)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+DESCRIPTION: 文本和数字输入框组件
+VARIANTS:
+  - 文本输入框 (9 variants): status=[noContent,hasContent,danger,Success,disabled,disabled-hasContent,hover,focus,input]
+  - 数字输入框 (8 variants): status=[default,hover,left-hover,right-hover,left-active,right-active,激活-中间输入,disabled]
+  - 表单标题 (4 variants): required × helpTips
+  - 表单项-文本输入框 (82 variants): status × required × helpTips × showExtraInfo × label
 
-| # | Name | Node ID | Type | Description |
-|---|------|---------|------|-------------|
-| 27 | 完整拼装页面 | 7zwFy | frame | 配置页、卡片页、列表页完整页面模板 |
-| 28 | 顶部导航质感图标 | wqMp8 | frame | 6个顶部导航质感图标(服务/看板/项目/工作台/首页等) |
+## 12. 筛选 (Filter)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+DESCRIPTION: 筛选组件，支持简易/复杂类型
+VARIANTS:
+  - .筛选-选项-单项 (2 variants): status=[default,hover+active]
+  - 筛选选择面板 (4 variants): number=[3,4,5,6]
+  - 筛选 (8 variants): status × type=[简易,复杂]
+
+## 13. 顶部导航 (TopNavigation)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+DESCRIPTION: 顶部导航栏组件
+VARIANTS:
+  - 顶部导航栏 (2 variants): 种类=[default,占位]
+  - 顶部导航栏-右侧图标 (6 variants): status=[default,hover+active]
+  - 头像信息 (2 variants): status=[default,hover+active]
+  - 菜单 (2 variants): status=[default,hover+active]
+  - 菜单组 (5 variants): 菜单项目数量=[2,3,4,5,6]
+  - 控制台 (2 variants)
+  - 菜单按钮 (2 variants): status=[default,hover]
+
+## 14. 侧边栏 (Sidebar - 工具链导航)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+DESCRIPTION: 侧边栏导航组件（工具链专用）
+VARIANTS:
+  - .二级菜单-展开 (3 variants): status=[default,hover,active]
+  - .二级菜单-收起 (3 variants): status
+  - .工具链专用导航-展开 (18 variants): status × 展开 × 二级菜单数量
+  - .工具链专用导航-收起 (6 variants): 展开 × 二级菜单数量
+  - .一级菜单-收起 (2 variants): status=[default,hover]
+  - .热区按钮 (6 variants): status × 展开
+  - .项目选项 (2 variants): status
+  - .项目选项下拉面板 (3 variants): number=[1,2,3]
+  - .选择项目 (4 variants): 展开 × 下拉
+  - 工具链专用导航 (2 variants): 展开=[on,off]
+
+## 15. 侧边导航-手风琴 (Accordion Sidebar)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+DESCRIPTION: 手风琴式侧边导航菜单
+VARIANTS:
+  - .一级 (5 variants): status=[default,expand,expand+hover,hover,active]
+  - .二级 (8 variants): Property 1 × 显示VIP
+  - .一级菜单展开 (8 variants): 选项数量 × 展开
+  - 一级菜单组 (9 variants): 一级菜单数量=[1..9]
+  - 侧边导航-手风琴/侧边栏
+
+## 16. 表单项 (FormItem)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+DESCRIPTION: 表单项组合组件
+VARIANTS:
+  - 表单组件 (8 variants): showExtraInfo × 组件类型=[下拉选择,输入框] × 按钮
+
+## 17. 头信息 (HeaderInfo)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+DESCRIPTION: 页面头信息组件，含面包屑标题和搜索
+VARIANTS:
+  - .头信息标题面包屑 (2 variants): status=[active,default]
+  - .头信息标题面包屑组 (6 variants): 个数 × 尺寸
+  - .代码健康度检查 (2 variants): status=[未检查,已检查]
+  - .代码仓选项 (2 variants): status=[default,hover+active]
+  - 头信息 (4 variants): 状态 × 搜索项数量
+
+## 18. 业务组件 (Business Components)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+DESCRIPTION: 特定业务场景卡片组件
+VARIANTS:
+  - 左侧选择菜单卡片, banner卡片, banner, 公告卡片, 活动卡片, api-arts
+
+## 19. 其他 (Others)
+PEN_PATH: designsystem/devUI/components/devUI.pen
+  - 字母icon (26 variants): A-Z 字母图标
+  - 卡片icon (3 variants): 名称=[默认项目,我的关注,归档]
+  - .priority-flag (3 variants): 优先级=[低,中,高]
+  - 计数徽章 (1 variant): 99+
 
 ---
 
-## DESIGN TOKENS SUMMARY | 设计令牌概要
+# DESIGN TOKENS SUMMARY | 设计令牌摘要
 
-### Colors 色彩
-- Primary 主色: #5E7CE0 (Default) / #7693F5 (Hover) / #344899 (Active) / #526ECC (Dark Active) / #BECCFA (Disabled)
-- Success 成功: #50D4AB
-- Warning 警告: #FA9841
-- Danger 错误: #F66F6A
-- Info 提示: #5E7CE0
-- Text Primary 主文字: #252B3A
-- Text Secondary 辅助文字: #575D6C / #8A8E99
-- Text Placeholder 占位符: #ADB0B8 / #BABBC0
-- Text Link 链接: #5E7CE0 / #526ECC
-- Border 边框: #DFE1E6 / #ADB0B8 / #D7D8DA
-- Background 背景: #FFFFFF / #F5F5F5 / #F2F5FC / #F5F9FF
+## Colors | 颜色
+- Brand Primary: #5e7ce0 (品牌色/按钮主要)
+- Brand Active Bg: #f2f5fc (品牌色浅底)
+- Text Primary: #252b3a (主要文字)
+- Text Secondary: #8a8e99 (次要文字/占位符)
+- Text Weak: #575d6c (弱化文字)
+- Background: #ffffff (白色背景)
+- Border: #adb0b8 (边框线)
+- Divider: #dfe1e6 (分割线)
+- Success: #50d4ab (成功/绿色标签)
+- Danger: #f66f6a / #ff9685 (危险/红色)
+- Warning: #fac532 (警告/黄色)
+- Disabled Bg: #f5f5f5
 
-### Typography 字体
-- Chinese Primary: Noto Sans SC
-- Chinese Secondary: HarmonyOS Sans SC
-- Latin: Roboto
-- Sizes: 12 / 14 / 15 / 16 / 18 / 22 / 24 / 48 px
-- Weights: normal (400) / 500 / 700
+## Typography | 排版
+- Font Family: "Noto Sans SC", "HarmonyOS Sans SC", "Roboto"
+- Body: 14px / normal / line-height 1.57
+- Caption: 12px / normal / line-height 1.67
+- Heading: 18px / bold (700)
+- Page Title: 16px / medium (500)
+- Title Weight: bold (700)
+- Content Weight: normal
 
-### Spacing 间距
-- Grid: 4px base → 0, 1, 2, 4, 5, 8, 10, 12, 16, 20, 24, 32
-- Common padding patterns: [4, 8] / [4, 12] / [5, 16] / [9, 20] / [8, 8] / [12, 12] / [0, 16]
+## Spacing | 间距
+- Component Padding: 4px, 8px, 12px, 16px, 20px, 24px
+- Component Gap: 4px, 8px, 10px, 16px
+- Card Padding: [20px, 24px]
+- Navigation Padding: [0, 8px]
 
-### Corner Radius 圆角
-- None: 0
-- Small: 1 / 2
-- Default: 4
-- Medium: 5 / 6
-- Large: 8
-- Extra Large: 16
-- Pill: 100 / 999
+## Corner Radius | 圆角
+- Small: 2px (复选框)
+- Default: 4px (按钮、标签、输入框)
+- Medium: 6px (搜索框)
+- Large: 8px (卡片)
+- Round: 999px (头像)
 
----
-
-## VARIANT NAMING CONVENTION | 变体命名规范
-
-组件变体使用 "Key=Value" 中文命名格式：
-- 尺寸-Size: lg / md / sm
-- 状态-Status: default / hover / active / disabled
-- 选项状态-status: default / hover / active / disabled
-- 位置-position: startPosition / middleItem / endPosition
-- 内容类型-contentType: textContent / checkBox / text / link / tags / treeStructure / statusWithName
-- 灰色背景-header-bg: true / false
-- 优先级: 低 / 中 / 高
-- 数量-number: 1 / 2 / 3
-- icon or number: icon / number
+## Shadows | 阴影
+- Card Shadow: 0 1px 5.25px rgba(0,0,0,0.08)
+- Navigation Shadow: 0 1px 5.25px rgba(0,0,0,0.08)
+- Overlay Shadow: 0 4px 10.5px rgba(0,0,0,0.16)
 
 ---
 
-## USAGE NOTES | 使用说明
-
-1. 所有组件均使用 Flex 布局（layout: horizontal），通过 gap / padding / alignItems / justifyContent 控制内部间距和对齐
-2. 按钮组件支持三种尺寸：lg (padding 9/20) / md (padding 5/16) / sm (padding 4/12)
-3. 主要按钮使用实色填充 (#5E7CE0)，次要按钮使用白底 + 边框 (#ADB0B8)
-4. 表格单元格高度统一 42px，表头支持灰色背景 (#F5F5F5) 或白色背景两种风格
-5. 组件边框使用 1px，默认圆角 4px
-6. 禁用状态统一使用浅色填充：主要按钮 #BECCFA，次要按钮 #F5F5F5 + 边框 #DFE1E6
-
----
-
-## SEE ALSO
-
-- llms-full.txt: 详细组件规范、节点层级、属性映射及转换规则
-- DevUI Design: https://devui.design/design-cn/start
-- DevUI GitHub: https://github.com/DevCloudFE/ng-devui
+# REFERENCE | 参考
+- Design Specification: https://devui.design/design-cn/start
+- Component Documentation: https://devui.design/components/get-start
+- GitHub Repository: https://github.com/DevCloudFE/ng-devui
