@@ -1,0 +1,382 @@
+---
+name: pen-design-generator
+description: Generate UI design drafts (.pen files) using Pencil MCP tools, referencing design component libraries and specification documents. Use when the user asks to create UI designs, mockups, screens, dashboards, or any visual design task that involves .pen files, DevUI components, or Pencil design tools.
+---
+
+# Pencil 设计稿生成
+
+根据 UI 设计需求，参考 DevUI 组件库和设计规范文档，使用 Pencil MCP 工具生成 .pen 设计稿。
+
+## 默认资源
+
+| 资源 | 路径 |
+|------|------|
+| **DevUI 组件库** | `designsystem/devUI/components/devUI2.pen` |
+| **设计规范文档** | `designsystem/devUI/llms-full.txt` |
+
+除非用户明确指定其他组件库或规范文档，否则始终使用上述默认资源。
+
+## 输入要求
+
+用户需提供：
+
+1. **UI 设计需求**：详细的页面/功能描述
+2. **设计组件库路径**（可选）：默认使用 `designsystem/devUI/components/devUI2.pen`
+3. **设计规范文档路径**（可选）：默认使用 `designsystem/devUI/llms-full.txt`
+
+## 工作流程
+
+**设计过程总览**：**一开始先获取 Pencil 设计 schema**；再**规划整个页面的设计内容**（布局、区块清单、每区块用哪些组件或从零创建）；然后**进入设计循环**，对每个区块依次：**查看当前页面是否有可用组件** → 若没有则**参考组件库**是否有可用组件（仅复制**组件**，不复制展示区）→ **参考组件使用指引**设计当前区块 → **若有组件则用 ref 复用**，并**必须**对其实例的**文本、图标、图片**进行修改（不得保留组件默认占位内容）。
+
+---
+
+### 阶段 0：获取 Pencil 设计 Schema（最先执行）
+
+在设计稿上做任何 `batch_design` 或深度读取之前，**必须先**获取 Pencil 的 .pen 设计 schema，后续构造的节点（ref、descendants、frame、text 等）须符合该 schema。
+
+```bash
+get_editor_state(include_schema=true)
+```
+
+- 若当前没有打开的 .pen 文件，可先 `open_document(filePathOrTemplate=设计稿路径或"new")` 再调用上述接口。
+- 返回中的 **schema** 描述了 .pen 节点类型、Ref 的 `descendants` 格式、Child 合法字段等；**构造 I/C/R 的 nodeData 时严格按 schema**，尤其 ref 的 `descendants` 的 key（子节点 id 或路径）与 value（属性覆盖或整节点替换）格式。
+
+---
+
+### 阶段 1：准备 — 理解需求与资源
+
+**1.1 读取设计规范文档**
+
+```bash
+Read("designsystem/devUI/llms-full.txt")
+```
+
+关注要点：
+- 颜色体系（主色、辅助色、文字色、背景色）
+- 排版体系（字号、字重、行高）
+- 间距规则（基础网格、推荐间距值）
+- 阴影与圆角
+- 禁用模式
+
+**1.2 获取设计系统组件全景**
+
+> **核心原则**：先用 `get_editor_state` 从组件库文件中拿到所有可复用组件的 id 等信息，再对可能需要使用的组件用 `batch_get` 按 id 拉取详细节点信息，最后用组件复制工具将需要使用的组件复制到当前设计页面。
+
+**第一步：打开组件库并获取可复用组件清单**
+
+若组件库尚未为当前活动文件，先打开组件库：
+
+```bash
+open_document(filePathOrTemplate="designsystem/devUI/components/devUI2.pen")
+```
+
+然后调用 **get_editor_state** 获取当前（组件库）文件中与设计相关的信息，包括可复用组件的 id、名称等：
+
+```bash
+get_editor_state(include_schema=false)
+```
+
+根据返回结果整理出组件库内**所有可复用组件的 id 及基本信息**，按功能分类构建组件索引（名称、id、用途判断）。
+
+**第二步：按 id 深度读取可能用到的组件**
+
+根据设计需求，从组件索引中选出**可能需要使用的组件**，用 **batch_get 按 id** 获取其详细节点结构（便于后续 `ref` 引用与 `U()` 覆写）：
+
+```bash
+batch_get(
+  filePath="designsystem/devUI/components/devUI2.pen",
+  nodeIds=["组件ID1", "组件ID2", "组件ID3", ...],
+  readDepth=3,
+  resolveInstances=true
+)
+```
+
+据此确认组件是否匹配需求、内部子节点 id 及可覆写属性。
+
+**第三步：构建组件索引并决定复制列表**
+
+结合第一步的 id 清单与第二步的详细结构，整理组件索引并**最终确定需要复制到设计稿的组件 id 列表**。注意：**只复制真正的“组件”节点，不复制展示区/分组容器**（见下节「只复制组件」）。
+
+```
+组件索引（从 get_editor_state + batch_get 结果整理）：
+├── 导航类
+│   ├── "顶部导航栏/默认" (id: xxx) — 1920×40
+│   ├── "面包屑" (id: xxx)
+│   ├── "手风琴侧栏/默认" (id: xxx) — 192×800
+│   └── ...
+├── 按钮类
+│   ├── "主按钮/L/默认" (id: xxx) — 72×32
+│   ├── "次按钮/L/默认" (id: xxx) — 72×32
+│   └── ...
+├── 输入类 / 表单类 / ...
+└── 待复制到设计稿的 id 列表: [id1, id2, id3, ...]  （仅组件根节点 id）
+```
+
+**1.3 只复制组件（禁止复制展示区/分组容器）**
+
+> **强制规则**：`copy_components` 的 `component_ids` 中**只能传入“组件”的根节点 id**，即该节点自身为可复用组件（通常带 `reusable: true`），且代表**单个实例**（如一个按钮、一条面包屑、一个输入框），而不是“包含多个变体/示例的展示区”。
+
+- **可以复制**：组件库中**单个**可复用组件根节点，例如「面包屑」「主按钮/某尺寸某状态」「单条表单项-文本输入框的某一变体」「复选框文本组合的某一变体」等。需通过 `batch_get(..., resolveInstances=true)` 或查看节点层级，确认该 id 对应的是**一个**组件实例，而非一整个 section。
+- **禁止复制**：以“展示多组变体”为目的的**容器节点**，例如「表单项-文本输入框」的**整块展示区**（内含多行多列表单项）、「文本输入框」的**整块展示区**、「复选框」的**整块 3×3 变体区**等。这类节点的 id 往往是 section 的根，复制会导致整块无关内容进入设计稿。
+
+判断方式：若某 id 下包含多个并列的“同类型、不同状态”子内容（如多个按钮、多行表单项），则该 id 多为展示区根，应到其**子节点**中找出单个 `reusable` 组件 id 再复制。
+
+**1.4 将所需组件复制到当前设计页面**
+
+确定复制列表后（仅包含上述“单个组件”id），使用组件复制工具一次性复制到设计稿：
+
+```bash
+copy_components(
+  source_file="designsystem/devUI/components/devUI2.pen",
+  target_file=设计稿.pen路径,
+  component_ids=["组件ID1", "组件ID2", ...]   # 仅传入单个组件的根 id，不传展示区根 id
+)
+```
+
+复制完成后**必须**调用 `reloadfile(设计稿.pen路径)` 重新加载设计稿，再通过 `batch_get(filePath=设计稿路径, patterns=[{reusable: true}])` 确认组件已到位并记录设计稿中的新组件 id，供后续 `batch_design` 中的 `ref` 使用。
+
+**复制后必须调用 reloadfile 重新加载文件**：`copy_components` 是直接写磁盘的，Pencil 持有内存中的文档副本，不会自动感知磁盘变更。复制完成后**必须**立即调用 `reloadfile` 关闭并重新打开该文件，否则 `batch_get` / `batch_design` 将无法读取到新复制的组件。
+
+```bash
+# 复制后必做
+reloadfile(file_path=设计稿.pen路径)
+batch_get(filePath=设计稿路径, patterns=[{reusable: true}])
+```
+
+**若 reloadfile 后仍检测不到新组件**（例如 `batch_design` 报错 `Tried to reference non-existent node`）：调用 `reload_pencil` 重载整个 Cursor 窗口，或提示用户手动关闭该 .pen 标签页后重新打开。
+
+注意事项：只复制**单个组件** id，不复制展示区根 id；将所有需要复制的组件 ID 放在一个数组中一次性复制；不要对同一目标文件并行调用 `copy_components`。
+
+---
+
+### 阶段 2：规划 — 规划整个页面的设计内容
+
+在动手画任何区块之前，**先完整规划整页的设计内容**，避免复制了组件却不用、或漏掉区块。
+
+**2.1 输出页面设计规划**
+
+1. **页面布局**：整体结构（如顶部导航 + 左侧双栏 + 主内容区）。
+2. **区块清单**：按从上到下、从左到右列出每个区块（如：顶栏、一级侧栏、二级菜单、面包屑、页头信息、页签、表单卡片、表单项 1/2/3…、提交按钮）。
+3. **每个区块的组件策略**：该区块打算用哪个组件（来自设计稿或组件库）、若没有则“按规范从零创建”，并注明复制后要在该区块用 ref 引用。
+
+输出示例：
+
+```
+页面设计规划：
+├── 顶栏 → 使用组件库「顶部导航栏」→ 复制后在本页用 ref，再改文案/图标
+├── 一级侧栏 → 使用组件库「侧边栏-手风琴」→ 复制后 ref，再改菜单项
+├── 二级菜单 → 使用组件库「一级菜单-选中/未选中」→ 复制后 ref，再改菜单文案
+├── 主内容区
+│   ├── 面包屑 → 使用「面包屑」→ 复制后 ref，再改各级文案
+│   ├── 仓库页头 → 图标+标题+按钮 → 部分 ref 按钮，其余按规范创建
+│   ├── 页签栏 → 使用「页签」或按规范创建 → ref 后改选中态与文案
+│   └── 表单卡片
+│       ├── 继承代码组设置 → 使用「复选框文本组合」单条变体 → 复制单组件后 ref，改文案
+│       ├── 禁止 Fork / MR 预合并 → 同上，单条复选框组件
+│       ├── 分支名规则 / Tags 名规则 → 使用「文本输入框」单条变体 → ref 后改占位与说明
+│       └── 提交按钮 → 使用「主按钮」单条变体（禁用态）→ ref
+└── 无匹配组件处 → 严格按设计规范从零创建（Design Token）
+```
+
+**2.2 按规划决定“需要复制的组件”列表**
+
+根据 2.1 的规划，从组件库中选出**仅作为单个组件**的 id（见 1.3），形成本次设计稿要复制的 id 列表；若某区块已有组件则不再重复复制。复制时只执行一次 `copy_components(..., component_ids=[...])`，且列表中**只含组件根 id，不含展示区根 id**。
+
+---
+
+### 阶段 3：设计 — 进入设计循环，逐区块完成
+
+设计过程按**设计循环**进行：对规划中的**每一个区块**依次执行下列步骤，直到整页完成。
+
+**3.1 设计循环（每个区块必走一遍）**
+
+对当前区块依次执行：
+
+| 步骤 | 动作 | 说明 |
+|------|------|------|
+| 1 | **查当前页是否有可用组件** | `batch_get(filePath=设计稿路径, patterns=[{reusable: true}])`，看设计稿里是否已有本区块需要的组件（如按钮、输入框、面包屑等）。 |
+| 2 | **没有则查组件库** | 若当前页没有，则查组件库（get_editor_state / batch_get 组件库，按 1.2）。确认库中是否有**单个**可复用组件（非展示区根）可用。 |
+| 3 | **参考组件使用指引设计当前区块** | 查阅设计系统/参考文档中该组件的用法（slot、子节点 id、可覆写属性）。若库中有组件：则先按需 `copy_components`（仅组件 id）并 `reloadfile`，再在设计稿中对该区块使用 ref；若库中也没有，则按设计规范从零创建当前区块。 |
+| 4 | **有组件则 ref 复用，必须用 descendants 修改所有文本图层** | **强制**：用 ref 插入组件时，**必须**在 `descendants` 中列出组件内**所有 text 类型子节点**并替换为符合设计需求的实际文案。禁止省略 descendants，禁止遗漏任何文本图层，禁止保留默认占位文本。标准写法：`I(parent, {type: "ref", ref: "组件ID", descendants: { "文本子节点ID1": { content: "实际文案1" }, "文本子节点ID2": { content: "实际文案2" }, ... }})`。须先通过 `batch_get(nodeIds=[组件ID], readDepth=3, resolveInstances=true)` 获取所有 text 子节点 ID。 |
+
+**循环流程概括：**
+
+```
+对「当前区块」：
+  → 当前页面是否有可用组件？ 
+      → 有：用 ref 复用该组件，进入步骤 4。
+  → 没有：组件库是否有可用组件（且确认为单个组件 id）？
+      → 有：复制该组件到设计稿（仅组件 id），reloadfile，再 ref 复用，进入步骤 4。
+  → 没有：参考设计规范与使用指引，从零创建该区块。
+  → 步骤 4：**必须**修改该区块的文本、图标、图片等（用 descendants 或 U/R），使内容符合当前页面需求。
+然后进入下一个区块，重复上述循环。
+```
+
+> **重要**：复制到设计稿的必须是**组件**（单个可复用实例），复制后若在本区块使用 ref，则**必须在本区块内用 ref 引用该组件**，不得复制了导航栏/菜单栏等组件却在页面上用自建 frame 代替、导致复制的组件未被使用。
+
+> **重要（ref 后必改）**：使用 ref 引用组件后，**必须**对组件实例的**文本、图标、图片**进行修改。例如：按钮要改文案、输入框要改占位符/标签、面包屑要改各级文案、导航要改菜单项与标题等。不得保留“主要按钮”“请输入”“项目名称”等组件默认占位内容，否则设计稿无法表达真实业务语义。
+
+**3.2 创建画布与顶层结构**
+
+先建好整页画布与主结构（如顶栏容器、主体左右分栏），再在设计循环中逐区块填入内容：
+
+```javascript
+screen=I(document, {type: "frame", name: "页面名称", width: 1920, height: 1080, fill: "#EEF0F5", layout: "vertical"})
+```
+
+**3.3 逐区块执行设计循环**
+
+对每个区块执行 3.1 的步骤 1～4：查页 → 查库 → 按指引设计（ref 或从零创建）→ **必改**该区块的文案/图标/图片。每个 `batch_design` 调用控制在 **25 个操作以内**。
+
+**组件使用优先级（在设计循环中选用）：**
+
+- **优先级 1**：当前页或复制后有可复用组件且满足需求 → **必须**用 `I(..., {type: "ref", ref: "组件ID", descendants: { "所有文本子节点ID": { content: "实际文案" }, ... }})` 在插入时通过 descendants 修改**全部**文本图层。禁止不带 descendants 的 ref 插入，禁止遗漏文本图层。
+- **优先级 2**：有组件但需改结构（如增减菜单项）→ 用 `C()` 复制该组件再 `U()`/`R()`/`D()` 修改。
+- **优先级 3**：当前页与组件库都无匹配组件 → 按设计规范从零创建，使用 Design Token。
+
+**示例 — ref 复用并改文案（推荐用 descendants，见 reference 1.3）：**
+
+```javascript
+breadcrumb=I(header, {
+  type: "ref",
+  ref: "面包屑组件ID",
+  width: "fill_container",
+  descendants: {
+    "第1级文本ID": { content: "首页" },
+    "第2级文本ID": { content: "项目名称" },
+    "第3级文本ID": { content: "代码托管" }
+  }
+})
+```
+
+**示例 — 复制后修改（导航栏菜单项）：**
+
+```javascript
+navbar=C("导航栏组件ID", screen, {width: "fill_container"})
+U(navbar+"/标题文本ID", {content: "我的应用"})
+D(navbar+"/多余菜单项ID")
+newItem=R(navbar+"/旧菜单项ID", {type: "text", content: "新菜单项"})
+```
+
+**示例 — 从零创建（无匹配组件时）：**
+
+```javascript
+title=I(container, {type: "text", content: "页面标题", fontSize: 16, fontWeight: "700", fill: "#252B3A", fontFamily: "Noto Sans SC", lineHeight: 1.5})
+```
+
+### 阶段 4：验证 — 截图检查
+
+每完成一个主要区域后，用 `get_screenshot` 验证：
+
+```bash
+get_screenshot(filePath=设计稿路径, nodeId=区域节点ID)
+```
+
+检查要点：
+- [ ] 布局是否正确（无重叠、无溢出）
+- [ ] 间距是否符合 4px 网格
+- [ ] 颜色是否使用设计令牌
+- [ ] 字号是否在规范范围内（12/14/16/20/24/36）
+- [ ] 组件状态是否正确
+- [ ] 所有 ref 实例是否在插入时提供了 `descendants` 参数
+- [ ] `descendants` 是否覆盖了组件内**所有** text 类型子节点
+- [ ] 是否还残留默认占位文本（"主要按钮""请输入""标签""选项一""层级1"等）
+
+发现问题立即修复后再继续。
+
+## 组件发现与使用指南
+
+### 使用 ref 引用组件后必须用 descendants 修改所有文本图层（强制）
+
+- **强制规则**：凡是用 `ref` 引用组件的地方，**必须**在插入时通过 `descendants` 参数列出组件内**所有 text 类型子节点**，并将每个文本替换为符合设计需求的实际文案。
+- **禁止**：
+  - 不带 `descendants` 的 ref 插入（如 `I(parent, {type: "ref", ref: "ID"})` 缺少 descendants）
+  - 只改部分文本图层、遗漏其他文本图层
+  - 保留组件默认占位文本（如「主要按钮」「请输入」「项目名称」「选项一」「标签」「层级1」等）
+- **操作步骤**：
+  1. 先用 `batch_get(nodeIds=[组件ID], readDepth=3, resolveInstances=true)` 获取组件内所有 text 子节点的 ID
+  2. 根据设计需求为每个 text 子节点准备实际文案
+  3. 插入时在 `descendants` 中**逐一列出所有文本图层**：`I(parent, {type: "ref", ref: "组件ID", descendants: {"文本ID1": {content: "实际文案1"}, "文本ID2": {content: "实际文案2"}, ...}})`
+
+### 只复制组件（再次强调）
+
+- **可以复制**：组件库中**单个**可复用组件的根节点 id（该节点通常 `reusable: true`，且代表一个实例，如一个按钮、一条面包屑、一个输入框的某一状态）。
+- **禁止复制**：以“展示多组变体”为目的的**容器/展示区**根 id（如整块表单项展示区、整块输入框展示区、整块复选框 3×3 网格等）。复制展示区会导致整块无关内容进入设计稿。
+- 判断方式：用 `batch_get(..., readDepth=2)` 看该 id 下是否有多列/多行“同类型不同状态”的子内容；若有，则到其**子节点**里找单个 `reusable` 组件 id 再复制。
+
+### 组件发现与复制流程（标准流程）
+
+**不要**用关键词在组件库中盲目搜索。应按下述顺序操作：
+
+```
+步骤 1：打开组件库文件（使组件库成为当前活动文档）
+  open_document(filePathOrTemplate="designsystem/devUI/components/devUI2.pen")
+
+步骤 2：用 get_editor_state 获取组件库中所有可复用组件的 id 等信息
+  get_editor_state(include_schema=false)
+  → 从返回结果中整理出可复用组件的 id、名称等，构建组件索引
+
+步骤 3：根据设计需求，从索引中选出可能需要使用的组件，用 batch_get 按 id 获取详细节点信息
+  batch_get(filePath="designsystem/devUI/components/devUI2.pen", nodeIds=[组件ID1, 组件ID2, ...], readDepth=3, resolveInstances=true)
+  → 确认该 id 是“单个组件”而非“展示区根”；确认匹配需求，并拿到内部子节点 id，供后续 U() 覆写使用
+
+步骤 4：确定“需要复制到设计稿”的**组件** id 列表（仅单个组件根 id），使用组件复制工具复制
+  copy_components(source_file="designsystem/devUI/components/devUI2.pen", target_file=设计稿路径, component_ids=[...])
+  → 复制后必须 reloadfile(设计稿路径)，再 batch_get 设计稿确认组件已到位
+```
+
+### 跨文件组件复制（前置条件）
+
+Pencil **不支持跨文件引用组件**。设计稿中使用的所有组件必须先存在于当前 .pen 文件中。且 **copy_components 只传入组件根 id**，不传展示区/分组容器 id。
+
+| 场景 | 操作 | 工具 |
+|------|------|------|
+| 组件在外部组件库中 | 仅将**单个组件**复制到当前文件 | `copy_components(source, target, ids)`，ids 仅含组件根 id |
+| 组件已在当前文件中 | 无需复制，直接 ref 使用 | — |
+
+### 逐区块设计循环（设计过程中）
+
+在设计每一个区块时，按顺序执行（与阶段 3 设计循环一致）：
+
+```
+1. 查看当前页面是否有可用组件
+   batch_get(filePath=设计稿路径, patterns=[{reusable: true}])
+   → 若有本区块需要的组件，则用 ref 复用，并修改该区块的文本、图标、图片（步骤 4）
+
+2. 若没有，则参考组件库中是否有可用组件
+   get_editor_state / batch_get("designsystem/devUI/components/devUI2.pen", nodeIds=[...])，且确认是**单个组件** id，非展示区根
+
+3. 参考组件使用指引设计当前区块
+   若有组件：copy_components 只复制该组件根 id → reloadfile → 在本区块用 ref 引用
+   若无组件：按设计规范从零创建当前区块
+
+4. 有组件则使用 ref 复用，**必须**在 `descendants` 中列出所有 text 子节点并替换为实际文案；禁止省略 descendants，禁止遗漏文本图层，禁止保留默认占位文案
+```
+
+### 按优先级使用组件
+
+| 优先级 | 条件 | 使用方式 | 工具/操作 |
+|--------|------|----------|-----------|
+| 1（最优） | 组件完全满足需求 | 直接 ref 引用，并必须改文案/图标 | `I({type: "ref", ref: ID, descendants: {...}})` 或 `I()` + `U(实例/子节点, {content, ...})` |
+| 2 | 组件结构接近但部分不满足 | 复制组件后修改 | `C()` + `U()` / `R()` / `D()` 深度修改 |
+| 3（最后） | 确认组件索引中无匹配组件 | 根据设计规范从零创建 | `I()` 逐层构建，严格遵循 Design Token |
+
+> **强制检查点**：
+> - 选择优先级 3 之前，必须确认已通过 **get_editor_state** 获取组件库中可复用组件 id 清单，并对可能用到的组件通过 **batch_get(nodeIds=[...])** 按 id 拉取过详细节点信息，确认组件库中确实没有可匹配或可复用的**单个组件**后再从零创建。
+> - 复制时**只复制组件根 id**，不复制展示区/分组容器 id；复制了的组件必须在对应区块用 ref 使用，不得复制后改用自建 frame 代替。
+> - ref 引用时**必须**在 `descendants` 中覆盖组件内**所有** text 图层，禁止保留默认占位文本（如"主要按钮""请输入""标签""选项一""层级1"等）。
+
+## 设计规范速查
+
+设计过程中始终遵循以下规范：
+
+- **颜色**：使用规范文档中定义的 Design Token，不使用任意色值
+- **字号**：仅使用 12/14/16/20/24/36 px
+- **间距**：始终为 4 的倍数（4/8/12/16/20/24/32）
+- **圆角**：默认 4px，小型组件 2px
+- **阴影**：使用规范定义的阴影层级
+- **字体**：使用 `Noto Sans SC` 或规范指定字体
+
+## 详细参考
+
+- 工具速查、组件使用详细示例和 Design Token 见 [reference.md](reference.md)

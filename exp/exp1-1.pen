@@ -40,7 +40,17 @@
               "ref": "TDk1s",
               "width": 288,
               "height": "fill_container",
-              "name": "secondNav"
+              "name": "secondNav",
+              "descendants": {
+                "291b8": {
+                  "flipX": false,
+                  "flipY": false,
+                  "width": 248,
+                  "height": 40,
+                  "x": 0,
+                  "y": 800
+                }
+              }
             },
             {
               "type": "frame",
@@ -2578,6 +2588,7 @@
           "type": "frame",
           "id": "rjQ45",
           "name": ".基础面包屑组件",
+          "width": "fit_content(0)",
           "height": 28,
           "stroke": {
             "align": "inside",

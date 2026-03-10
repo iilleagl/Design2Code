@@ -1,0 +1,72 @@
+---
+description: Pencil 设计过程中 DevUI 组件库的使用指引 - 组件获取、跨文件复制、ref 实例化与内容定制
+globs: "**/*.pen"
+alwaysApply: false
+---
+
+# DevUI 组件设计使用指引
+
+## 1. 了解当前设计环境
+
+开始设计前，调用 `get_editor_state(include_schema=true)` 获取：
+- 当前活跃的 .pen 文件信息
+- 用户选区上下文
+- .pen 文件 schema（首次需要，后续可设为 false）
+
+schema 中包含组件使用方式（ref 引用、descendants 覆写等），务必遵循。
+
+## 2. 跨文件复制组件
+
+Pencil 不支持跨文件直接 ref 引用组件，组件库（如 `devUI2.pen`）中的组件须先复制到目标文件。
+
+### 完整流程
+
+```
+copy_components(source_file, target_file, component_ids)
+  → reloadfile(file_path=目标文件)
+  → batch_get 确认组件到位
+  → batch_design 开始设计
+```
+
+### 关键细节
+
+- `copy_components` 支持批量复制，将所有需要的组件 ID 放入一个数组一次性传入
+- **禁止**并行调用 `copy_components` 写入同一目标文件，会导致写入冲突
+- 复制是写磁盘操作，Pencil 内存中的文档副本不会自动感知变更
+- 复制完成后**必须**调用 `reloadfile` 刷新目标文件
+- 如果 `reloadfile` 后 `batch_get` 仍检测不到复制的组件，调用 `reload_pencil` 重启 Pencil 插件
+
+## 3. 使用 ref 引用组件并定制内容
+
+通过 `batch_design` 的 Insert 操作以 ref 方式实例化组件后，**必须**使用 `descendants` 属性或后续 `U()` 操作修改子节点内容，使其符合设计意图。
+
+### 插入组件实例并修改文本
+
+```javascript
+// 方式一：Insert + Update
+card=I("parentId", {type: "ref", ref: "CardComp"})
+U(card+"/titleText", {content: "实际标题"})
+U(card+"/descText", {content: "实际描述"})
+
+// 方式二：Copy 时通过 descendants 直接覆写
+card=C("CardComp", "parentId", {
+  descendants: {
+    "titleText": {content: "实际标题"},
+    "descText": {content: "实际描述"}
+  }
+})
+```
+
+不修改 descendants 会导致组件保留默认占位文本，不符合设计需求。
+
+## 4. 区分组件与变体
+
+- 一个组件通常包含多个**变体**（如按钮的 default/hover/active/disabled 状态，或 sm/md/lg 尺寸）
+- **不要**复制或引用一个组件的所有变体，应根据设计需求找到具体的变体 ID 去使用
+- 使用 `batch_get` 或 `list_components` / `search_components` 查找目标变体
+- 组件名以 `.` 开头的是基础子组件，通常不直接使用
+
+```
+❌ 错误：复制"按钮-主要"组件的全部变体
+✅ 正确：找到"按钮-主要/md/default"的具体变体 ID（如 RoYUx）去引用
+```
